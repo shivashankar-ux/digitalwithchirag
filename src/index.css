@@ -14,8 +14,8 @@
   --gold: #f5a623;
   --white: #f0ede8;
   --muted: rgba(240,237,232,0.45);
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'Outfit', sans-serif;
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Figtree', sans-serif;
 }
 
 html {
@@ -145,3 +145,70 @@ body::before {
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
+
+/* ─── KEYFRAMES ─────────────────────────────────────────────── */
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── RESPONSIVE LAYOUT CLASSES ─────────────────────────────── */
+.hero-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-badge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* ─── BREAKPOINTS ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-main-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    display: none;
+  }
+  body {
+    cursor: auto; /* restore default cursor on mobile */
+  }
+  .cursor-dot, .cursor-ring {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-badge-grid {
+    grid-template-columns: 1fr;
+  }
+}

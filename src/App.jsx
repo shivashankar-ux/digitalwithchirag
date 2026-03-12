@@ -79,7 +79,7 @@ function Nav() {
       <a href="#" style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.2rem', color: 'var(--white)', textDecoration: 'none', letterSpacing: '0.02em' }}>
         Digital<span style={{ color: 'var(--orange)' }}>With</span>Chirag
       </a>
-      <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+      <div className="nav-links">
         {['Program', 'About', 'Results'].map(l => (
           <a key={l} href={`#${l.toLowerCase()}`} style={{ color: 'var(--muted)', fontSize: '0.88rem', textDecoration: 'none', letterSpacing: '0.05em', fontWeight: 500, transition: 'color 0.2s' }}
             onMouseEnter={e => e.target.style.color = 'var(--white)'}
@@ -153,9 +153,7 @@ function Hero() {
           </div>
         </h1>
 
-        <style>{`@keyframes slideUp { from { transform: translateY(100%); opacity:0 } to { transform: translateY(0); opacity:1 } }`}</style>
-
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+        <div className="hero-main-grid">
           <div>
             <p style={{ fontSize: '1.1rem', color: 'var(--muted)', lineHeight: 1.8, marginBottom: '2.5rem', animation: 'fadeIn 1s ease 0.6s both' }}>
               Train with <strong style={{ color: 'var(--white)', fontWeight: 600 }}>Chirag Atreja</strong> — a digital agency professional with <strong style={{ color: 'var(--orange)' }}>{count}+ years</strong> of real campaign experience — and gain practical skills that companies actually hire for.
@@ -174,8 +172,7 @@ function Hero() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', animation: 'fadeIn 1s ease 0.5s both' }}>
-            <style>{`@keyframes fadeIn { from { opacity:0; transform:translateY(20px) } to { opacity:1; transform:translateY(0) } }`}</style>
+          <div className="hero-badge-grid" style={{ animation: 'fadeIn 1s ease 0.5s both' }}>
             {[
               { icon: '📅', title: '4 Months', sub: 'Course + Internship' },
               { icon: '🎯', title: 'Live Classes', sub: 'Real-time learning' },
@@ -240,6 +237,8 @@ function ForWhom() {
 /* ─── CURRICULUM ─────────────────────────────────────────────── */
 function Curriculum() {
   const [active, setActive] = useState(0)
+  const [animKey, setAnimKey] = useState(0)
+
   const tracks = [
     {
       label: '🎓 Career Track',
@@ -268,39 +267,57 @@ function Curriculum() {
     }
   ]
 
+  const switchTab = (i) => {
+    setActive(i)
+    setAnimKey(k => k + 1)
+  }
+
   return (
-    <section style={{ padding: '8rem 5vw', background: 'var(--bg)' }}>
+    <section style={{ padding: 'clamp(4rem, 8vw, 8rem) 5vw', background: 'var(--bg)' }}>
+      <style>{`
+        @keyframes itemIn {
+          from { opacity: 0; transform: translateY(16px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .curr-item { animation: itemIn 0.4s cubic-bezier(0.16,1,0.3,1) both; }
+      `}</style>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div className="reveal" style={{ marginBottom: '4rem' }}>
+        <div className="reveal" style={{ marginBottom: '3rem' }}>
           <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--orange)', display: 'block', marginBottom: '1rem' }}>Curriculum</span>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2.2rem, 4vw, 4rem)', lineHeight: 0.95 }}>
             What you'll<br /><span style={{ color: 'var(--orange)' }}>master</span>
           </h2>
         </div>
 
-        <div className="reveal" style={{ display: 'flex', gap: '0.8rem', marginBottom: '3rem', flexWrap: 'wrap' }}>
+        <div className="reveal" style={{ display: 'flex', gap: '0.8rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
           {tracks.map((t, i) => (
-            <button key={i} onClick={() => setActive(i)} style={{
-              background: active === i ? 'var(--orange)' : 'var(--surface)', color: active === i ? 'white' : 'var(--muted)',
-              border: `1px solid ${active === i ? 'var(--orange)' : 'var(--border)'}`, padding: '0.6rem 1.5rem', borderRadius: '8px',
-              fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.88rem', cursor: 'pointer', letterSpacing: '0.03em',
-              transition: 'all 0.25s', boxShadow: active === i ? '0 0 30px var(--orange-glow)' : 'none',
+            <button key={i} onClick={() => switchTab(i)} style={{
+              background: active === i ? 'var(--orange)' : 'var(--surface)',
+              color: active === i ? 'white' : 'var(--muted)',
+              border: `1px solid ${active === i ? 'var(--orange)' : 'var(--border)'}`,
+              padding: '0.6rem 1.5rem', borderRadius: '8px',
+              fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.88rem',
+              cursor: 'pointer', letterSpacing: '0.03em',
+              transition: 'all 0.25s',
+              boxShadow: active === i ? '0 0 30px var(--orange-glow)' : 'none',
             }}>
               {t.label}
             </button>
           ))}
         </div>
 
-        <div className="stagger-children" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }} key={active}>
+        <div key={animKey} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '1rem' }}>
           {tracks[active].items.map((item, i) => (
-            <div key={i} data-hover style={{
+            <div key={i} className="curr-item" data-hover style={{
               display: 'flex', alignItems: 'center', gap: '1rem',
               background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '10px',
-              padding: '1.1rem 1.4rem', transition: 'border-color 0.25s, transform 0.25s, box-shadow 0.25s',
+              padding: '1.1rem 1.4rem',
+              transition: 'border-color 0.25s, transform 0.25s, box-shadow 0.25s',
+              animationDelay: `${i * 0.06}s`,
             }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,92,26,0.4)'; e.currentTarget.style.transform = 'translateX(6px)'; e.currentTarget.style.boxShadow = '-4px 0 20px rgba(255,92,26,0.1)' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.transform = 'translateX(0)'; e.currentTarget.style.boxShadow = 'none' }}>
-              <span style={{ color: 'var(--orange)', fontSize: '0.8rem', fontWeight: 900, flexShrink: 0 }}>0{i + 1}</span>
+              <span style={{ color: 'var(--orange)', fontSize: '0.78rem', fontWeight: 900, flexShrink: 0, minWidth: '24px' }}>0{i + 1}</span>
               <span style={{ fontSize: '0.95rem', color: 'var(--white)', fontWeight: 500 }}>{item}</span>
             </div>
           ))}
@@ -401,7 +418,7 @@ function About() {
     <section id="about" style={{ padding: '8rem 5vw', background: 'var(--surface)', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', top: '50%', right: '-10%', transform: 'translateY(-50%)', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,92,26,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '5rem', alignItems: 'center' }}>
+      <div className="about-grid" style={{ maxWidth: '1200px', margin: '0 auto' }}>
         {/* Avatar side */}
         <div className="reveal-left">
           <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
