@@ -221,9 +221,9 @@ function Hero() {
           <span style={{ fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--orange)' }}>India's Most Practical Digital Marketing Training</span>
         </div>
 
-        <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(3.5rem, 7vw, 7.5rem)', lineHeight: 0.9, letterSpacing: '-0.02em', marginBottom: '2rem' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(3.5rem, 7vw, 7.5rem)', lineHeight: 0.9, letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
           <div style={{ overflow: 'hidden' }}>
-            <span style={{ display: 'block', animation: 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s both' }}>LEARN</span>
+            <span style={{ display: 'block', fontSize: 'clamp(1.2rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '0.01em', animation: 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s both' }}>Industry-Level</span>
           </div>
           <div style={{ overflow: 'hidden' }}>
             <span style={{ display: 'block', color: 'var(--orange)', animation: 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both', textShadow: '0 0 80px rgba(255,92,26,0.4)' }}>DIGITAL</span>
@@ -231,7 +231,20 @@ function Hero() {
           <div style={{ overflow: 'hidden' }}>
             <span style={{ display: 'block', animation: 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s both' }}>MARKETING</span>
           </div>
+          <div style={{ overflow: 'hidden' }}>
+            <span style={{ display: 'block', fontSize: 'clamp(1.2rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '0.01em', animation: 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s both' }}>Training for Serious Learners</span>
+          </div>
         </h1>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem', marginBottom: '2rem', animation: 'fadeIn 1s ease 0.5s both' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+            <span style={{ fontSize: '1.1rem' }}>🎓</span>
+            <span style={{ fontSize: '0.95rem', color: 'var(--white)', fontWeight: 600 }}>Build Job-Ready Skills Companies Actually Hire For</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+            <span style={{ fontSize: '1.1rem' }}>💼</span>
+            <span style={{ fontSize: '0.95rem', color: 'var(--white)', fontWeight: 600 }}>Learn to Run & Scale Digital Marketing for Your Business</span>
+          </div>
+        </div>
 
         <div className="hero-main-grid">
           <div>
