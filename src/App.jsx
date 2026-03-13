@@ -573,32 +573,92 @@ function Comparison() {
   ]
 
   return (
-    <section id="results" style={{ padding: '8rem 5vw', background: 'var(--surface)' }}>
-      <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-        <div className="reveal" style={{ marginBottom: '4rem' }}>
+    <section id="results" style={{ padding: 'clamp(4rem, 8vw, 8rem) 5vw', background: 'var(--surface)' }}>
+      <style>{`
+        .comp-card {
+          background: var(--bg);
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          padding: 1.6rem;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0;
+          overflow: hidden;
+          transition: border-color 0.3s, transform 0.3s;
+        }
+        .comp-card:hover {
+          border-color: rgba(255,193,7,0.3);
+          transform: translateY(-3px);
+        }
+        .comp-label {
+          grid-column: 1 / -1;
+          font-size: 0.72rem;
+          font-weight: 700;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: var(--muted);
+          margin-bottom: 1.2rem;
+          padding-bottom: 0.8rem;
+          border-bottom: 1px solid var(--border);
+        }
+        .comp-us {
+          padding: 1rem 1.2rem;
+          background: rgba(255,193,7,0.06);
+          border-radius: 10px 0 0 10px;
+          border: 1px solid rgba(255,193,7,0.15);
+        }
+        .comp-them {
+          padding: 1rem 1.2rem;
+          background: rgba(255,255,255,0.02);
+          border-radius: 0 10px 10px 0;
+          border: 1px solid var(--border);
+          border-left: none;
+        }
+        .comp-col-label {
+          font-size: 0.68rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          margin-bottom: 0.5rem;
+        }
+        .comp-col-text {
+          font-size: 0.9rem;
+          font-weight: 600;
+          line-height: 1.5;
+        }
+        .comp-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr));
+          gap: 1rem;
+        }
+      `}</style>
+
+      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div className="reveal" style={{ marginBottom: '3.5rem' }}>
           <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--orange)', display: 'block', marginBottom: '1rem' }}>Why Choose Us</span>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2.2rem, 4vw, 4rem)', lineHeight: 0.95 }}>
-             What makes us<br /><span style={{ color: 'var(--orange)' }}>different</span>
+            What makes us<br /><span style={{ color: 'var(--orange)' }}>different</span>
           </h2>
         </div>
 
-        <div className="reveal" style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border)' }}>
-          {/* Header */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', background: 'var(--bg)' }}>
-            <div style={{ padding: '1.2rem 1.5rem', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.1em', color: 'var(--muted)', textTransform: 'uppercase' }} />
-            <div style={{ padding: '1.2rem 1.5rem', background: 'rgba(255,92,26,0.15)', borderLeft: '1px solid rgba(255,92,26,0.3)', fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1rem', color: 'var(--orange)' }}>DigitalWithChirag</div>
-            <div style={{ padding: '1.2rem 1.5rem', borderLeft: '1px solid var(--border)', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1rem', color: 'var(--muted)' }}>Others</div>
-          </div>
+        {/* Column headers */}
+        <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0', maxWidth: '440px', marginBottom: '1rem', marginLeft: 'auto', marginRight: '0' }}>
+          <div style={{ textAlign: 'center', padding: '0.5rem', fontSize: '0.72rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--orange)' }}>DigitalWithChirag</div>
+          <div style={{ textAlign: 'center', padding: '0.5rem', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--muted)' }}>Others</div>
+        </div>
+
+        <div className="comp-grid reveal">
           {rows.map(([label, us, them], i) => (
-            <div key={i} data-hover style={{
-              display: 'grid', gridTemplateColumns: '1fr 1fr 1fr',
-              borderTop: '1px solid var(--border)', transition: 'background 0.2s',
-            }}
-              onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,92,26,0.04)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
-              <div style={{ padding: '1.1rem 1.5rem', fontSize: '0.88rem', fontWeight: 600, color: 'var(--muted)' }}>{label}</div>
-              <div style={{ padding: '1.1rem 1.5rem', borderLeft: '1px solid rgba(255,92,26,0.2)', fontSize: '0.88rem', color: '#ff8a5c', fontWeight: 600 }}>{us}</div>
-              <div style={{ padding: '1.1rem 1.5rem', borderLeft: '1px solid var(--border)', fontSize: '0.88rem', color: 'rgba(240,237,232,0.3)' }}>{them}</div>
+            <div key={i} className="comp-card">
+              <div className="comp-label">{label}</div>
+              <div className="comp-us">
+                <div className="comp-col-label" style={{ color: 'var(--orange)' }}>✦ Us</div>
+                <div className="comp-col-text" style={{ color: '#ffcf60' }}>{us.replace('✓ ', '')}</div>
+              </div>
+              <div className="comp-them">
+                <div className="comp-col-label" style={{ color: 'rgba(240,237,232,0.3)' }}>✗ Others</div>
+                <div className="comp-col-text" style={{ color: 'rgba(240,237,232,0.3)' }}>{them}</div>
+              </div>
             </div>
           ))}
         </div>
@@ -606,6 +666,7 @@ function Comparison() {
     </section>
   )
 }
+       
 
 /* ─── OUTCOMES ───────────────────────────────────────────────── */
 function Outcomes() {
