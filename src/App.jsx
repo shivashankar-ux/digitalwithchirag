@@ -312,8 +312,30 @@ function FounderCarousel() {
 
             {/* Controls */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              {/* Prev */}
-              <button onClick={prev} style={{ width: '40px', height: '40px', bor
+              <button onClick={prev} style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--bg)', border: '1px solid var(--border)', color: 'var(--white)', fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s, background 0.2s', flexShrink: 0 }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--orange)'; e.currentTarget.style.background = 'rgba(255,193,7,0.1)' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'var(--bg)' }}>
+                ←
+              </button>
+
+              <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                {slides.map((_, i) => (
+                  <button key={i} onClick={() => goTo(i)} style={{ width: i === current ? '24px' : '8px', height: '8px', borderRadius: '100px', background: i === current ? 'var(--orange)' : 'rgba(255,255,255,0.2)', border: 'none', cursor: 'pointer', padding: 0, transition: 'all 0.3s ease' }} />
+                ))}
+              </div>
+
+              <button onClick={next} style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--bg)', border: '1px solid var(--border)', color: 'var(--white)', fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'border-color 0.2s, background 0.2s', flexShrink: 0 }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--orange)'; e.currentTarget.style.background = 'rgba(255,193,7,0.1)' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'var(--bg)' }}>
+                →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 /* ─── FOR WHOM ───────────────────────────────────────────────── */
 function ForWhom() {
