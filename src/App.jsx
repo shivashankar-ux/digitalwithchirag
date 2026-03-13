@@ -447,9 +447,50 @@ function ForWhom() {
             cards.forEach(c => obs.observe(c))
           }}>
           {[
-            { icon: '🎓', label: 'Students & Freshers', desc: 'Kickstart your career with job-ready digital marketing skills that top companies actually hire for.', color: '#FFC107' },
-            { icon: '💼', label: 'Working Professionals', desc: 'Upskill, switch roles, or get promoted with real performance marketing expertise.', color: '#4facfe' },
-            { icon: '🏢', label: 'Business Owners', desc: 'Run your own Google & Meta campaigns confidently — no agency dependency, full control.', color: '#a78bfa' },
+            {
+              color: '#FFC107',
+              label: 'Students & Freshers',
+              desc: 'Kickstart your career with job-ready digital marketing skills that top companies actually hire for.',
+              svg: (
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <rect width="48" height="48" rx="14" fill="rgba(255,193,7,0.12)" />
+                  <path d="M24 13L36 19.5V26C36 32.075 30.627 37.725 24 39C17.373 37.725 12 32.075 12 26V19.5L24 13Z" stroke="#FFC107" strokeWidth="1.8" fill="rgba(255,193,7,0.08)" strokeLinejoin="round"/>
+                  <path d="M19 25l3.5 3.5L29 22" stroke="#FFC107" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              ),
+              tag: 'CAREER STARTER'
+            },
+            {
+              color: '#4facfe',
+              label: 'Working Professionals',
+              desc: 'Upskill, switch roles, or get promoted with real performance marketing expertise.',
+              svg: (
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <rect width="48" height="48" rx="14" fill="rgba(79,172,254,0.12)" />
+                  <rect x="13" y="20" width="22" height="16" rx="3" stroke="#4facfe" strokeWidth="1.8" fill="rgba(79,172,254,0.08)"/>
+                  <path d="M19 20v-3a2 2 0 012-2h6a2 2 0 012 2v3" stroke="#4facfe" strokeWidth="1.8" strokeLinecap="round"/>
+                  <path d="M13 27h22" stroke="#4facfe" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="3 2"/>
+                  <circle cx="24" cy="27" r="2" fill="#4facfe"/>
+                </svg>
+              ),
+              tag: 'UPSKILL & GROW'
+            },
+            {
+              color: '#a78bfa',
+              label: 'Business Owners',
+              desc: 'Run your own Google & Meta campaigns confidently — no agency dependency, full control.',
+              svg: (
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                  <rect width="48" height="48" rx="14" fill="rgba(167,139,250,0.12)" />
+                  <path d="M16 34V24M24 34V18M32 34V27" stroke="#a78bfa" strokeWidth="2.2" strokeLinecap="round"/>
+                  <circle cx="16" cy="21" r="2.5" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" strokeWidth="1.5"/>
+                  <circle cx="24" cy="15" r="2.5" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" strokeWidth="1.5"/>
+                  <circle cx="32" cy="24" r="2.5" fill="rgba(167,139,250,0.2)" stroke="#a78bfa" strokeWidth="1.5"/>
+                  <path d="M18 20l4-3.5M26.2 16l4 6.5" stroke="#a78bfa" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="2 1.5"/>
+                </svg>
+              ),
+              tag: 'SCALE YOUR BIZ'
+            },
           ].map((c, i) => (
             <div key={i} className="for-card"
               onMouseEnter={e => { e.currentTarget.style.borderColor = c.color + '66' }}
@@ -457,7 +498,10 @@ function ForWhom() {
               <div className="card-shine" />
               <div className="card-top-line" style={{ background: `linear-gradient(90deg, transparent, ${c.color}, transparent)` }} />
               <div className="card-number">{String(i + 1).padStart(2, '0')}</div>
-              <div className="card-icon">{c.icon}</div>
+              <div className="card-icon">{c.svg}</div>
+              <div style={{ display: 'inline-block', background: c.color + '18', border: `1px solid ${c.color}44`, borderRadius: '100px', padding: '0.2rem 0.7rem', marginBottom: '0.8rem' }}>
+                <span style={{ fontSize: '0.62rem', fontWeight: 800, letterSpacing: '0.15em', color: c.color }}>{c.tag}</span>
+              </div>
               <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.3rem', marginBottom: '0.8rem', color: 'var(--white)' }}>{c.label}</h3>
               <p style={{ color: 'var(--muted)', lineHeight: 1.7, fontSize: '0.95rem' }}>{c.desc}</p>
             </div>
