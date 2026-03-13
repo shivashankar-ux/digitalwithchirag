@@ -232,7 +232,7 @@ function Hero() {
             <span style={{ display: 'block', animation: 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s both' }}>MARKETING</span>
           </div>
           <div style={{ overflow: 'hidden' }}>
-            <span style={{ display: 'block', fontSize: 'clamp(1.2rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '0.01em', animation: 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s both' }}>Training for Serious Learners</span>
+            <span style={{ display: 'block', fontSize: 'clamp(1.2rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '0.01em', animation: 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s both' }}></span>
           </div>
         </h1>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem', marginBottom: '2rem', animation: 'fadeIn 1s ease 0.5s both' }}>
