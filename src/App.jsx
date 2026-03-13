@@ -232,9 +232,11 @@ function FounderCarousel() {
   const prev = () => goTo((current - 1 + slides.length) % slides.length)
 
   useEffect(() => {
-    timerRef.current = setInterval(next, 2500)
+    timerRef.current = setInterval(() => {
+      setCurrent(c => (c + 1) % 3)
+    }, 2000)
     return () => clearInterval(timerRef.current)
-  }, [current])
+  }, [])
 
   return (
     <section style={{ background: 'var(--bg)', padding: 'clamp(4rem, 8vw, 7rem) 5vw', overflow: 'hidden' }}>
