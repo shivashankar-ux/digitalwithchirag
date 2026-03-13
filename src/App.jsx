@@ -726,7 +726,7 @@ function TestimonialVideos() {
           <div style={{
             position: 'absolute', bottom: 0, left: 0, right: 0,
             background: 'linear-gradient(to top, rgba(5,5,8,0.85) 0%, transparent 50%)',
-            padding: '2rem 1.2rem 1.2rem',
+            padding: '2rem 1.2rem 3.5rem',
             pointerEvents: 'none',
           }}>
             <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.95rem', color: 'var(--white)' }}>Real Campaign Work</div>
