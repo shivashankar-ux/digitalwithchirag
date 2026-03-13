@@ -506,6 +506,17 @@ function Curriculum() {
     setAnimKey(k => k + 1)
   }
 
+  useEffect(() => {
+    const t = setInterval(() => {
+      setActive(a => {
+        const next = (a + 1) % tracks.length
+        setAnimKey(k => k + 1)
+        return next
+      })
+    }, 7000)
+    return () => clearInterval(t)
+  }, [])
+
   return (
     <section style={{ padding: 'clamp(4rem, 8vw, 8rem) 5vw', background: 'var(--bg)' }}>
       <style>{`
@@ -528,7 +539,7 @@ function Curriculum() {
             <button key={i} onClick={() => switchTab(i)} style={{
               background: active === i ? 'var(--orange)' : 'var(--surface)',
               color: active === i ? 'white' : 'var(--muted)',
-              border: `1px solid ${active === i ? 'var(--orange)' : 'var(--border)'}`,
+              border: `1px solid var(--orange)`,
               padding: '0.6rem 1.5rem', borderRadius: '8px',
               fontFamily: 'var(--font-body)', fontWeight: 700, fontSize: '0.88rem',
               cursor: 'pointer', letterSpacing: '0.03em',
