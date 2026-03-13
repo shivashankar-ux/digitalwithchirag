@@ -267,7 +267,7 @@ function Hero() {
 
           <div className="hero-badge-grid" style={{ animation: 'fadeIn 1s ease 0.5s both' }}>
             {[
-              { icon: '📅', title: '4 Months', sub: 'Course + Internship' },
+              { icon: '📅', title: '3 +1 Months', sub: 'Course + Internship' },
               { icon: '🎯', title: 'Live Classes', sub: 'Real-time learning' },
               { icon: '💼', title: '100%', sub: 'Job Assistance' },
               { icon: '🤖', title: 'AI Tools', sub: 'Included in curriculum' },
