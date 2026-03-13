@@ -197,6 +197,123 @@ function Hero() {
     </section>
   )
 }
+/* ─── FOUNDER CAROUSEL ───────────────────────────────────────── */
+function FounderCarousel() {
+  const [current, setCurrent] = useState(0)
+  const [animating, setAnimating] = useState(false)
+  const timerRef = useRef(null)
+
+  const slides = [
+    {
+      image: '/chirag-1.jpg',
+      quote: 'I didn\'t just study digital marketing — I lived it inside the world\'s top agencies for over a decade.',
+      tag: '12+ Years of Real Agency Experience',
+    },
+    {
+      image: '/chirag-2.jpg',
+      quote: 'Every campaign I teach, I\'ve actually run. Every tool I show you, I\'ve used on real client budgets.',
+      tag: 'Trained by Global Networks — Publicis, WPP, Havas',
+    },
+    {
+      image: '/chirag-3.jpg',
+      quote: 'DigitalWithChirag exists because the industry needed training that actually prepares you for the real thing.',
+      tag: 'Founder, DigitalWithChirag',
+    },
+  ]
+
+  const goTo = (index) => {
+    if (animating) return
+    setAnimating(true)
+    setCurrent(index)
+    setTimeout(() => setAnimating(false), 500)
+  }
+
+  const next = () => goTo((current + 1) % slides.length)
+  const prev = () => goTo((current - 1 + slides.length) % slides.length)
+
+  useEffect(() => {
+    timerRef.current = setInterval(next, 2500)
+    return () => clearInterval(timerRef.current)
+  }, [current])
+
+  return (
+    <section style={{ background: 'var(--bg)', padding: 'clamp(4rem, 8vw, 7rem) 5vw', overflow: 'hidden' }}>
+      <style>{`
+        .founder-img {
+          opacity: 0;
+          transform: scale(1.04);
+          transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .founder-img.loaded {
+          opacity: 1;
+          transform: scale(1);
+        }
+        .founder-text-in {
+          animation: founderTextIn 0.5s cubic-bezier(0.16,1,0.3,1) both;
+        }
+        @keyframes founderTextIn {
+          from { opacity: 0; transform: translateY(16px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
+
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+
+        {/* Label */}
+        <div className="reveal" style={{ marginBottom: '3rem' }}>
+          <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--orange)', display: 'block', marginBottom: '0.8rem' }}>Meet Your Mentor</span>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2.2rem, 4vw, 4rem)', lineHeight: 0.95 }}>
+            The face behind<br /><span style={{ color: 'var(--orange)' }}>DigitalWithChirag</span>
+          </h2>
+        </div>
+
+        {/* Slide */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: '3rem', alignItems: 'center', borderRadius: '20px', background: 'var(--surface)', border: '1px solid var(--border)', overflow: 'hidden' }}>
+
+          {/* Image */}
+          <div style={{ position: 'relative', aspectRatio: '3/4', overflow: 'hidden', minHeight: '340px' }}>
+            {slides.map((s, i) => (
+              <img
+                key={i}
+                src={s.image}
+                alt={`Chirag Atreja ${i + 1}`}
+                className={`founder-img${i === current ? ' loaded' : ''}`}
+                style={{
+                  position: 'absolute', inset: 0, width: '100%', height: '100%',
+                  objectFit: 'cover', objectPosition: 'top center',
+                  pointerEvents: 'none',
+                }}
+              />
+            ))}
+            {/* Gradient overlay */}
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, transparent 60%, var(--surface))', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(5,5,8,0.5) 0%, transparent 40%)', pointerEvents: 'none' }} />
+          </div>
+
+          {/* Text */}
+          <div style={{ padding: 'clamp(1.5rem, 4vw, 3rem)', paddingLeft: '0' }} className="founder-text-in" key={current}>
+            <div style={{ display: 'inline-block', background: 'rgba(255,193,7,0.1)', border: '1px solid rgba(255,193,7,0.3)', borderRadius: '100px', padding: '0.35rem 1rem', marginBottom: '2rem' }}>
+              <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--orange)' }}>
+                {slides[current].tag}
+              </span>
+            </div>
+
+            <blockquote style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'clamp(1.3rem, 2.5vw, 2rem)', lineHeight: 1.3, color: 'var(--white)', marginBottom: '2.5rem', borderLeft: '3px solid var(--orange)', paddingLeft: '1.2rem' }}>
+              "{slides[current].quote}"
+            </blockquote>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2.5rem' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--orange)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '1rem', flexShrink: 0 }}>C</div>
+              <div>
+                <div style={{ fontWeight: 700, fontSize: '0.95rem', color: 'var(--white)' }}>Chirag Atreja</div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--orange)', fontWeight: 600 }}>Digital Marketing Expert · 12+ Years</div>
+              </div>
+            </div>
+
+            {/* Controls */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              {/* Prev */}
+              <button onClick={prev} style={{ width: '40px', height: '40px', bor
 
 /* ─── FOR WHOM ───────────────────────────────────────────────── */
 function ForWhom() {
@@ -344,7 +461,7 @@ function Comparison() {
         <div className="reveal" style={{ marginBottom: '4rem' }}>
           <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--orange)', display: 'block', marginBottom: '1rem' }}>Why Choose Us</span>
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(2.2rem, 4vw, 4rem)', lineHeight: 0.95 }}>
-            🔥 What makes us<br /><span style={{ color: 'var(--orange)' }}>different</span>
+             What makes us<br /><span style={{ color: 'var(--orange)' }}>different</span>
           </h2>
         </div>
 
@@ -546,6 +663,7 @@ export default function App() {
       <Nav />
       <Hero />
       <Marquee />
+      <FounderCarousel />
       <ForWhom />
       <Curriculum />
       <Comparison />
