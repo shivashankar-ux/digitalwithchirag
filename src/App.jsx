@@ -705,7 +705,48 @@ function Outcomes() {
     </section>
   )
 }
+/* ─── SHOWCASE VIDEO ─────────────────────────────────────────── */
+function TestimonialVideos() {
+  return (
+    <div style={{ position: 'relative', width: '100%' }}>
+      <div style={{ position: 'relative', width: '100%', maxWidth: '320px', margin: '0 auto' }}>
+        <div style={{
+          position: 'relative', aspectRatio: '9/16',
+          borderRadius: '32px', overflow: 'hidden',
+          border: '2px solid var(--border)',
+          boxShadow: '0 0 60px rgba(255,193,7,0.15), 0 40px 80px rgba(0,0,0,0.5)',
+          background: 'var(--bg)',
+        }}>
+          <video
+            src="/showcase.mp4"
+            controls
+            playsInline
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+          <div style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0,
+            background: 'linear-gradient(to top, rgba(5,5,8,0.85) 0%, transparent 50%)',
+            padding: '2rem 1.2rem 1.2rem',
+            pointerEvents: 'none',
+          }}>
+            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.95rem', color: 'var(--white)' }}>Real Campaign Work</div>
+            <div style={{ fontSize: '0.75rem', color: 'var(--orange)', fontWeight: 600, marginTop: '0.2rem' }}>By Chirag Atreja · 12+ Years Experience</div>
+          </div>
+        </div>
 
+        <div style={{
+          position: 'absolute', bottom: '-15px', right: '-15px',
+          background: 'var(--orange)', borderRadius: '12px', padding: '0.8rem 1.2rem',
+          boxShadow: '0 10px 40px var(--orange-glow)', animation: 'float 4s ease-in-out infinite',
+          zIndex: 10,
+        }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.5rem', lineHeight: 1 }}>12+</div>
+          <div style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Years Exp.</div>
+        </div>
+      </div>
+    </div>
+  )
+}
 /* ─── ABOUT ──────────────────────────────────────────────────── */
 function About() {
   const agencies = ['Publicis', 'WPP', 'Havas', 'Omnicom', 'IPG']
@@ -714,31 +755,21 @@ function About() {
       <div style={{ position: 'absolute', top: '50%', right: '-10%', transform: 'translateY(-50%)', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,92,26,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       <div className="about-grid" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        {/* Avatar side */}
+         {/* Video Testimonials */}
         <div className="reveal-left">
-          <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
-            {/* Spinning ring */}
-            <div style={{ position: 'absolute', inset: '-20px', borderRadius: '50%', border: '1px dashed rgba(255,92,26,0.2)', animation: 'spin-slow 20s linear infinite' }} />
-            <div style={{ position: 'absolute', inset: '-40px', borderRadius: '50%', border: '1px dashed rgba(255,92,26,0.1)', animation: 'spin-slow 30s linear infinite reverse' }} />
-
-            <div style={{ background: 'var(--bg)', border: '1px solid var(--border)', borderRadius: '20px', aspectRatio: '1', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 0%, rgba(255,92,26,0.1), transparent 60%)' }} />
-              <div style={{ fontSize: '5rem', marginBottom: '1rem' }}>👨‍💼</div>
-              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.1rem', color: 'var(--white)' }}>Chirag Atreja</div>
-              <div style={{ fontSize: '0.8rem', color: 'var(--orange)', fontWeight: 600, marginTop: '0.3rem' }}>Digital Marketing Expert</div>
-              {/* Pulse rings */}
-              <div style={{ position: 'absolute', bottom: '15%', left: '50%', transform: 'translateX(-50%)', width: '8px', height: '8px' }}>
-                <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: 'var(--orange)', animation: 'pulse-ring 2s ease-out infinite' }} />
-                <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: 'var(--orange)' }} />
-              </div>
-            </div>
-
-            {/* Floating badge */}
-            <div style={{ position: 'absolute', bottom: '-15px', right: '-15px', background: 'var(--orange)', borderRadius: '12px', padding: '0.8rem 1.2rem', boxShadow: '0 10px 40px var(--orange-glow)', animation: 'float 4s ease-in-out infinite' }}>
-              <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.5rem', lineHeight: 1 }}>12+</div>
-              <div style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Years Exp.</div>
-            </div>
-          </div>
+          <style>{`
+            .vid-card {
+              position: absolute;
+              inset: 0;
+              transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+            }
+            .vid-card.active { opacity: 1; transform: scale(1); z-index: 2; }
+            .vid-card.inactive { opacity: 0; transform: scale(0.96); z-index: 1; }
+            .vid-dot { width: 8px; height: 8px; border-radius: 100px; border: none; cursor: pointer; padding: 0; transition: all 0.3s ease; }
+            .vid-dot.active { width: 24px; background: var(--orange); }
+            .vid-dot.inactive { background: rgba(255,255,255,0.2); }
+          `}</style>
+          <TestimonialVideos />
         </div>
 
         {/* Text side */}
