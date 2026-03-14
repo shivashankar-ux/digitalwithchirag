@@ -32,38 +32,7 @@ body {
   cursor: none;
 }
 
-/* Custom cursor */
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--orange);
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s linear, width 0.2s, height 0.2s, background 0.2s;
-}
 
-.cursor-ring {
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid rgba(255, 92, 26, 0.5);
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: transform 0.12s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
-}
-
-.cursor-ring.hovering {
-  width: 56px;
-  height: 56px;
-  border-color: var(--orange);
-}
 
 /* Noise overlay */
 body::before {

@@ -1,48 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-/* ─── CUSTOM CURSOR ─────────────────────────────────────────── */
-function Cursor() {
-  const dot = useRef(null)
-  const ring = useRef(null)
 
-  useEffect(() => {
-    let mx = 0, my = 0, rx = 0, ry = 0
-    const move = (e) => { mx = e.clientX; my = e.clientY }
-    window.addEventListener('mousemove', move)
-
-    let raf
-    const animate = () => {
-      if (dot.current) {
-        dot.current.style.left = mx + 'px'
-        dot.current.style.top = my + 'px'
-      }
-      rx += (mx - rx) * 0.12
-      ry += (my - ry) * 0.12
-      if (ring.current) {
-        ring.current.style.left = rx + 'px'
-        ring.current.style.top = ry + 'px'
-      }
-      raf = requestAnimationFrame(animate)
-    }
-    raf = requestAnimationFrame(animate)
-
-    const addHover = () => ring.current?.classList.add('hovering')
-    const rmHover = () => ring.current?.classList.remove('hovering')
-    document.querySelectorAll('a,button,[data-hover]').forEach(el => {
-      el.addEventListener('mouseenter', addHover)
-      el.addEventListener('mouseleave', rmHover)
-    })
-
-    return () => { window.removeEventListener('mousemove', move); cancelAnimationFrame(raf) }
-  }, [])
-
-  return (
-    <>
-      <div className="cursor-dot" ref={dot} />
-      <div className="cursor-ring" ref={ring} />
-    </>
-  )
-}
 
 /* ─── SCROLL REVEAL HOOK ─────────────────────────────────────── */
 function useReveal() {
@@ -1023,7 +981,7 @@ export default function App() {
   useReveal()
   return (
     <>
-      <Cursor />
+      
       <a href="https://wa.me/919311048234" target="_blank" rel="noreferrer"
         style={{
           position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 999,
