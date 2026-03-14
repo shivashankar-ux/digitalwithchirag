@@ -252,7 +252,7 @@ function Hero() {
               Train with <strong style={{ color: 'var(--white)', fontWeight: 600 }}>Chirag Atreja</strong> — a digital agency professional with <strong style={{ color: 'var(--orange)' }}>{count}+ years</strong> of real campaign experience — and gain practical skills that companies actually hire for.
             </p>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', animation: 'fadeIn 1s ease 0.8s both' }}>
-              <a href="#contact" style={{ background: 'var(--orange)', color: 'white', padding: '0.9rem 2rem', borderRadius: '6px', textDecoration: 'none', fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 0 40px var(--orange-glow)', transition: 'transform 0.2s, box-shadow 0.2s', display: 'inline-block' }}
+              <a href="tel:+919311048234" style={{ background: 'var(--orange)', color: 'white', padding: '0.9rem 2rem', borderRadius: '6px', textDecoration: 'none', fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 0 40px var(--orange-glow)', transition: 'transform 0.2s, box-shadow 0.2s', display: 'inline-block' }}
                 onMouseEnter={e => { e.target.style.transform = 'translateY(-3px)'; e.target.style.boxShadow = '0 8px 50px var(--orange-glow)' }}
                 onMouseLeave={e => { e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = '0 0 40px var(--orange-glow)' }}>
                 Start Learning →
@@ -966,7 +966,7 @@ function CTA() {
           Join DigitalWithChirag and build the skills that top companies actually hire for.
         </p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a href="mailto:hello@digitalwithchirag.com" style={{
+          <a href="https://wa.me/919311048234" target="_blank" rel="noreferrer" style={{
             background: 'var(--orange)', color: 'white', padding: '1.1rem 2.5rem', borderRadius: '8px',
             textDecoration: 'none', fontWeight: 700, fontSize: '1rem', letterSpacing: '0.06em', textTransform: 'uppercase',
             boxShadow: '0 0 60px var(--orange-glow)', display: 'inline-block', transition: 'transform 0.2s, box-shadow 0.2s',
@@ -975,7 +975,7 @@ function CTA() {
             onMouseLeave={e => { e.target.style.transform = 'translateY(0) scale(1)'; e.target.style.boxShadow = '0 0 60px var(--orange-glow)' }}>
             Enroll Now →
           </a>
-          <a href="mailto:hello@digitalwithchirag.com" style={{
+          <a href="tel:+919311048234" style={{
             background: 'transparent', color: 'var(--white)', border: '1px solid rgba(255,255,255,0.2)',
             padding: '1.1rem 2.5rem', borderRadius: '8px', textDecoration: 'none', fontWeight: 600, fontSize: '1rem',
             display: 'inline-block', transition: 'border-color 0.2s, background 0.2s',
@@ -1008,7 +1008,7 @@ function Footer() {
           onMouseLeave={e => e.currentTarget.style.color = 'rgba(240,237,232,0.35)'}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
-        <a href="https://wa.me/919311048234" target="_blank" rel="noreferrer" style={{ color: 'rgba(240,237,232,0.35)', transition: 'color 0.2s' }}
+        <a href="https://wa.me/9311048234" target="_blank" rel="noreferrer" style={{ color: 'rgba(240,237,232,0.35)', transition: 'color 0.2s' }}
           onMouseEnter={e => e.currentTarget.style.color = '#25D366'}
           onMouseLeave={e => e.currentTarget.style.color = 'rgba(240,237,232,0.35)'}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1027,6 +1027,19 @@ export default function App() {
   return (
     <>
       <Cursor />
+      <a href="https://wa.me/919311048234" target="_blank" rel="noreferrer"
+        style={{
+          position: 'fixed', bottom: '2rem', right: '2rem', zIndex: 999,
+          width: '56px', height: '56px', borderRadius: '50%',
+          background: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: '0 4px 20px rgba(37,211,102,0.5)',
+          animation: 'float 3s ease-in-out infinite',
+          transition: 'transform 0.2s',
+        }}
+        onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.1)'}
+        onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
       <Nav />
       <Hero />
       <Marquee />
