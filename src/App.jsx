@@ -231,10 +231,7 @@ function Hero() {
           <div style={{ overflow: 'hidden' }}>
             <span style={{ display: 'block', animation: 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s both' }}>MARKETING</span>
           </div>
-          <div style={{ overflow: 'hidden' }}>
-            <span style={{ display: 'block', fontSize: 'clamp(1.2rem, 2.5vw, 2rem)', fontWeight: 700, letterSpacing: '0.01em', animation: 'slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s both' }}></span>
-          </div>
-        </h1>
+          </h1>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem', marginBottom: '2rem', animation: 'fadeIn 1s ease 0.5s both' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
             <span style={{ fontSize: '1.1rem' }}>🎓</span>
@@ -246,7 +243,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="hero-main-grid" style={{ marginTop: '0' }}>
+        <div className="hero-main-grid" style={{ marginTop: '-1.5rem' }}>
           <div>
             <p style={{ fontSize: '1.1rem', color: 'var(--muted)', lineHeight: 1.8, marginBottom: '2.5rem', animation: 'fadeIn 1s ease 0.6s both' }}>
               Train with <strong style={{ color: 'var(--white)', fontWeight: 600 }}>Chirag Atreja</strong> — a digital agency professional with <strong style={{ color: 'var(--orange)' }}>{count}+ years</strong> of real campaign experience — and gain practical skills that companies actually hire for.
