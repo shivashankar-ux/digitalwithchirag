@@ -246,13 +246,13 @@ function Hero() {
           </div>
         </div>
 
-        <div className="hero-main-grid">
+        <div className="hero-main-grid" style={{ marginTop: '0' }}>
           <div>
             <p style={{ fontSize: '1.1rem', color: 'var(--muted)', lineHeight: 1.8, marginBottom: '2.5rem', animation: 'fadeIn 1s ease 0.6s both' }}>
               Train with <strong style={{ color: 'var(--white)', fontWeight: 600 }}>Chirag Atreja</strong> — a digital agency professional with <strong style={{ color: 'var(--orange)' }}>{count}+ years</strong> of real campaign experience — and gain practical skills that companies actually hire for.
             </p>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', animation: 'fadeIn 1s ease 0.8s both' }}>
-              <a href="tel:+919311048234" style={{ background: 'var(--orange)', color: 'white', padding: '0.9rem 2rem', borderRadius: '6px', textDecoration: 'none', fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 0 40px var(--orange-glow)', transition: 'transform 0.2s, box-shadow 0.2s', display: 'inline-block' }}
+              <a href="https://wa.me/919311048234" target="_blank" rel="noreferrer" style={{ background: 'var(--orange)', color: 'white', padding: '0.9rem 2rem', borderRadius: '6px', textDecoration: 'none', fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 0 40px var(--orange-glow)', transition: 'transform 0.2s, box-shadow 0.2s', display: 'inline-block' }}
                 onMouseEnter={e => { e.target.style.transform = 'translateY(-3px)'; e.target.style.boxShadow = '0 8px 50px var(--orange-glow)' }}
                 onMouseLeave={e => { e.target.style.transform = 'translateY(0)'; e.target.style.boxShadow = '0 0 40px var(--orange-glow)' }}>
                 Start Learning →
@@ -435,7 +435,7 @@ function FounderCarousel() {
 /* ─── FOR WHOM ───────────────────────────────────────────────── */
 function ForWhom() {
   return (
-    <section id="program" style={{ padding: '8rem 5vw', background: 'var(--surface)' }}>
+    <section id="program" style={{ padding: '5rem 5vw', background: 'var(--surface)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div className="reveal" style={{ marginBottom: '4rem' }}>
           <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--orange)', display: 'block', marginBottom: '1rem' }}>Who Is This For</span>
@@ -820,7 +820,7 @@ function Outcomes() {
     { icon: '🏪', text: 'Run your own business ads independently' },
   ]
   return (
-    <section style={{ padding: '8rem 5vw', background: 'var(--bg)' }}>
+    <section style={{ padding: '5rem 5vw', background: 'var(--bg)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div className="reveal" style={{ marginBottom: '4rem' }}>
           <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--orange)', display: 'block', marginBottom: '1rem' }}>After Completing This Program</span>
@@ -892,7 +892,7 @@ function TestimonialVideos() {
 function About() {
   const agencies = ['Publicis', 'WPP', 'Havas', 'Omnicom', 'IPG']
   return (
-    <section id="about" style={{ padding: '8rem 5vw', background: 'var(--surface)', position: 'relative', overflow: 'hidden' }}>
+    <section id="about" style={{ padding: '5rem 5vw', background: 'var(--surface)', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', top: '50%', right: '-10%', transform: 'translateY(-50%)', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(255,92,26,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       <div className="about-grid" style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -953,7 +953,7 @@ function About() {
 /* ─── CTA ────────────────────────────────────────────────────── */
 function CTA() {
   return (
-    <section id="contact" style={{ padding: '10rem 5vw', background: 'var(--bg)', position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
+    <section id="contact" style={{ padding: '6rem 5vw', background: 'var(--bg)', position: 'relative', overflow: 'hidden', textAlign: 'center' }}>
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(255,92,26,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }} />
 

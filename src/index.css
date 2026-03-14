@@ -212,3 +212,9 @@ body::before {
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 768px) {
+  section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+}
