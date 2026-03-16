@@ -200,24 +200,183 @@ function Hero() {
 
         <div className="hero-main-grid" style={{ marginTop: "-1rem" }}>
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "1.2rem", background: "rgba(255,193,7,0.05)", border: "1px solid rgba(255,193,7,0.2)", borderLeft: "4px solid var(--orange)", borderRadius: "12px", padding: "1.2rem 1.4rem", marginBottom: "2.5rem", animation: "fadeIn 1s ease 0.6s both" }}>
-  <img src="/chirag-1.jpg" alt="Chirag Atreja" style={{ width: "64px", height: "64px", borderRadius: "50%", objectFit: "cover", objectPosition: "top center", border: "2px solid var(--orange)", flexShrink: 0, boxShadow: "0 0 12px rgba(255,193,7,0.4)" }} />
-  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-    <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--white)" }}>
-      Chirag Atreja <span style={{ color: "var(--orange)", fontWeight: 600 }}>· {count}+ Years Experience</span>
+            <div style={{ position: "relative", marginBottom: "2.5rem", animation: "fadeIn 1s ease 0.6s both" }}>
+  <style>{`
+    @keyframes borderGlow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.6; }
+    }
+    .mentor-card {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      background: rgba(13, 13, 20, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 193, 7, 0.25);
+      border-radius: 20px;
+      padding: 1.4rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .mentor-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 60px rgba(255, 193, 7, 0.15);
+    }
+    .mentor-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,193,7,0.6), transparent, rgba(255,92,26,0.4));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: borderGlow 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .mentor-card::after {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -20%;
+      width: 60%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,193,7,0.04), transparent);
+      transform: skewX(-15deg);
+      animation: shimmerMove 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes shimmerMove {
+      0% { left: -60%; }
+      100% { left: 120%; }
+    }
+    .avatar-ring {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .avatar-ring::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), rgba(255,92,26,0.8), var(--orange));
+      animation: spin-slow 4s linear infinite;
+      z-index: 0;
+    }
+    .avatar-ring::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,193,7,0.3), transparent);
+      animation: spin-slow 6s linear infinite reverse;
+      z-index: 0;
+    }
+    .avatar-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      transform: scale(1.15);
+      position: relative;
+      z-index: 1;
+      border: 2px solid var(--bg);
+    }
+    .online-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 12px;
+      height: 12px;
+      background: #25D366;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      z-index: 2;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .agency-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 100px;
+      padding: 0.25rem 0.65rem;
+      color: rgba(240,237,232,0.7);
+      letter-spacing: 0.05em;
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+    .agency-badge:hover {
+      background: rgba(255,193,7,0.12);
+      border-color: rgba(255,193,7,0.4);
+      color: var(--orange);
+    }
+    .industry-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      background: rgba(255,92,26,0.1);
+      border: 1px solid rgba(255,92,26,0.3);
+      border-radius: 100px;
+      padding: 0.25rem 0.65rem;
+      color: rgba(240,237,232,0.85);
+      transition: all 0.2s ease;
+    }
+    .industry-tag:hover {
+      background: rgba(255,92,26,0.2);
+      color: var(--white);
+    }
+    @media (max-width: 480px) {
+      .mentor-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+  `}</style>
+
+  <div className="mentor-card">
+    {/* Avatar */}
+    <div className="avatar-ring">
+      <img src="/chirag-3.jpg" alt="Chirag Atreja" className="avatar-img" />
+      <div className="online-dot" />
     </div>
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-      {["WPP", "IPG", "Publicis", "Omnicom", "Havas"].map((a) => (
-        <span key={a} style={{ fontSize: "0.7rem", fontWeight: 700, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "100px", padding: "0.2rem 0.6rem", color: "var(--muted)", letterSpacing: "0.05em" }}>{a}</span>
-      ))}
-    </div>
-    <div style={{ fontSize: "0.82rem", color: "var(--orange)", fontWeight: 700 }}>
-      💰 Handled ₹100 Cr+ Campaigns
-    </div>
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-      {["Automobile", "Telecom", "FMCG", "Ecommerce"].map((tag) => (
-        <span key={tag} style={{ fontSize: "0.7rem", fontWeight: 600, background: "rgba(255,92,26,0.1)", border: "1px solid rgba(255,92,26,0.25)", borderRadius: "100px", padding: "0.2rem 0.6rem", color: "var(--white)" }}>{tag}</span>
-      ))}
+
+    {/* Info */}
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.55rem", flex: 1 }}>
+      {/* Name */}
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+        <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "1rem", color: "var(--white)" }}>Chirag Atreja</span>
+        <span style={{ background: "rgba(255,193,7,0.15)", border: "1px solid rgba(255,193,7,0.4)", borderRadius: "100px", padding: "0.15rem 0.6rem", fontSize: "0.68rem", fontWeight: 700, color: "var(--orange)", letterSpacing: "0.05em" }}>⚡ {count}+ YRS</span>
+      </div>
+
+      {/* Agencies */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", alignItems: "center" }}>
+        <span style={{ fontSize: "0.65rem", color: "var(--muted)", fontWeight: 600, marginRight: "0.2rem" }}>Worked at:</span>
+        {["WPP", "IPG", "Publicis", "Omnicom", "Havas"].map((a) => (
+          <span key={a} className="agency-badge">{a}</span>
+        ))}
+      </div>
+
+      {/* Campaign stat */}
+      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--orange)", background: "rgba(255,193,7,0.1)", border: "1px solid rgba(255,193,7,0.3)", borderRadius: "8px", padding: "0.3rem 0.7rem", letterSpacing: "0.03em" }}>
+          💰 Handled ₹100 Cr+ Campaigns
+        </span>
+      </div>
+
+      {/* Industry tags */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
+        {["Automobile", "Telecom", "FMCG", "Ecommerce"].map((tag) => (
+          <span key={tag} className="industry-tag">{tag}</span>
+        ))}
+      </div>
     </div>
   </div>
 </div>
