@@ -283,7 +283,7 @@ function Hero() {
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center -20px;
   transform: scale(1.2);
   position: relative;
   z-index: 1;
@@ -602,6 +602,91 @@ function Curriculum() {
   );
 }
 
+/* ─── TOOLS MARQUEE ─────────────────────────────────────────── */
+function ToolsMarquee() {
+  const tools = [
+    { name: "Google Ads", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" },
+    { name: "Meta Ads", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" },
+    { name: "YouTube", logo: "https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" },
+    { name: "DV360", logo: "https://www.gstatic.com/images/branding/product/2x/display_video_360_64dp.png" },
+    { name: "Google Analytics", logo: "https://upload.wikimedia.org/wikipedia/commons/8/89/Google_Analytics_4_icon_2021.svg" },
+    { name: "ChatGPT", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
+    { name: "Canva", logo: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Canva_Logo.svg" },
+    { name: "Comscore", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Comscore_logo.svg" },
+    { name: "GWI", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/GWI_logo.svg" },
+  ];
+  const all = [...tools, ...tools];
+
+  return (
+    <section style={{ padding: "clamp(3rem, 6vw, 5rem) 0", background: "var(--bg)", overflow: "hidden" }}>
+      <style>{`
+        .tools-track {
+          display: flex;
+          animation: marquee 30s linear infinite;
+          width: max-content;
+        }
+        .tools-track:hover { animation-play-state: paused; }
+        .tool-pill {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 100px;
+          padding: 0.6rem 1.2rem;
+          margin: 0 0.6rem;
+          white-space: nowrap;
+          transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+          cursor: default;
+        }
+        .tool-pill:hover {
+          border-color: rgba(255,193,7,0.5);
+          box-shadow: 0 0 20px rgba(255,193,7,0.15);
+          transform: translateY(-2px);
+        }
+        .tool-logo {
+          width: 22px;
+          height: 22px;
+          object-fit: contain;
+          border-radius: 4px;
+        }
+        .tool-name {
+          font-size: 0.82rem;
+          font-weight: 700;
+          color: var(--white);
+          letter-spacing: 0.03em;
+        }
+      `}</style>
+
+      {/* Title */}
+      <div style={{ textAlign: "center", marginBottom: "2rem", padding: "0 5vw" }}>
+        <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)" }}>
+          Platforms & Tools You Will Master
+        </span>
+      </div>
+
+      {/* Scrolling row */}
+      <div style={{ overflow: "hidden", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "1rem 0", background: "var(--surface)" }}>
+        <div className="tools-track">
+          {all.map((tool, i) => (
+            <div key={i} className="tool-pill">
+              <img
+                src={tool.logo}
+                alt={tool.name}
+                className="tool-logo"
+                onError={(e) => { e.target.style.display = "none"; }}
+              />
+              <span className="tool-name">{tool.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+  );
+  
+}
+
 /* ─── COMPARISON ─────────────────────────────────────────────── */
 function Comparison() {
   const rows = [
@@ -836,6 +921,8 @@ export default function App() {
       <FounderCarousel />
       <ForWhom />
       <Curriculum />
+      <ToolsMarquee />
+
       <Comparison />
       <Outcomes />
       <About />
