@@ -333,9 +333,9 @@ function Hero() {
       color: var(--white);
     }
     @media (max-width: 480px) {
-      .mentor-card {
-        flex-direction: column;
-        align-items: flex-start;
+  .mentor-card {
+    flex-direction: row;
+    align-items: flex-start;
         gap: 1rem;
       }
     }
