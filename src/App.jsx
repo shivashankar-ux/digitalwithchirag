@@ -279,12 +279,12 @@ function Hero() {
       z-index: 0;
     }
     .avatar-img {
-      width: 80px;
-      height: 80px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       object-fit: cover;
-      object-position: top center;
-      transform: scale(1.15);
+      object-position: center 20%;
+      transform: scale(1.8);
       position: relative;
       z-index: 1;
       border: 2px solid var(--bg);
@@ -344,7 +344,7 @@ function Hero() {
   <div className="mentor-card">
     {/* Avatar */}
     <div className="avatar-ring">
-      <img src="/chirag-3.jpg" alt="Chirag Atreja" className="avatar-img" />
+      <img src="/chirag-2.jpg" alt="Chirag Atreja" className="avatar-img" />
       <div className="online-dot" />
     </div>
 
