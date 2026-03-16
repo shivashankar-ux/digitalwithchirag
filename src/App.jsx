@@ -633,7 +633,7 @@ function ToolsMarquee() {
           background: var(--surface);
           border: 1px solid var(--border);
           border-radius: 100px;
-          padding: 0.6rem 1.2rem;
+          padding: 0.8rem 1.6rem;
           margin: 0 0.6rem;
           white-space: nowrap;
           transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
@@ -645,13 +645,13 @@ function ToolsMarquee() {
           transform: translateY(-2px);
         }
         .tool-logo {
-          width: 22px;
-          height: 22px;
+          width: 36px;
+          height: 36px;
           object-fit: contain;
           border-radius: 4px;
         }
         .tool-name {
-          font-size: 0.82rem;
+          font-size: 0.92rem;
           font-weight: 700;
           color: var(--white);
           letter-spacing: 0.03em;
