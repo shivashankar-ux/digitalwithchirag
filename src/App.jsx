@@ -210,12 +210,7 @@ function Hero() {
                 onMouseLeave={(e) => { e.target.style.transform = "translateY(0)"; e.target.style.boxShadow = "0 0 40px var(--orange-glow)"; }}>
                 Start Learning →
               </a>
-              <a href="#contact"
-                style={{ background: "transparent", color: "var(--white)", border: "1px solid rgba(255,255,255,0.2)", padding: "0.9rem 2rem", borderRadius: "6px", textDecoration: "none", fontWeight: 600, fontSize: "0.9rem", transition: "border-color 0.2s, background 0.2s", display: "inline-block" }}
-                onMouseEnter={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.5)"; e.target.style.background = "rgba(255,255,255,0.05)"; }}
-                onMouseLeave={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.2)"; e.target.style.background = "transparent"; }}>
-                Free Consultation
-              </a>
+              
             </div>
           </div>
 
@@ -611,12 +606,7 @@ function CTA() {
             onMouseLeave={(e) => { e.target.style.transform = "translateY(0) scale(1)"; e.target.style.boxShadow = "0 0 60px var(--orange-glow)"; }}>
             Enroll Now →
           </a>
-          <a href="tel:+919311048234"
-            style={{ background: "transparent", color: "var(--white)", border: "1px solid rgba(255,255,255,0.2)", padding: "1.1rem 2.5rem", borderRadius: "8px", textDecoration: "none", fontWeight: 600, fontSize: "1rem", display: "inline-block", transition: "border-color 0.2s, background 0.2s" }}
-            onMouseEnter={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.5)"; e.target.style.background = "rgba(255,255,255,0.05)"; }}
-            onMouseLeave={(e) => { e.target.style.borderColor = "rgba(255,255,255,0.2)"; e.target.style.background = "transparent"; }}>
-            Book Free Consultation
-          </a>
+          
         </div>
       </div>
     </section>
