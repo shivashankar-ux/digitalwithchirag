@@ -176,7 +176,7 @@ function Hero() {
         </div>
 
         {/* Main heading */}
-        <h1 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "clamp(3.5rem, 7vw, 7.5rem)", lineHeight: 0.9, letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
+        <h1 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "clamp(2.5rem, 5vw, 5rem)", lineHeight: 0.9, letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
           <div style={{ overflow: "hidden" }}>
             <span style={{ display: "block", color: "var(--orange)", animation: "slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both", textShadow: "0 0 80px rgba(255,92,26,0.4)" }}>DIGITAL</span>
           </div>
