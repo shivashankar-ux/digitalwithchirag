@@ -279,11 +279,11 @@ function Hero() {
       z-index: 0;
     }
     .avatar-img {
-  width: 72px;
-  height: 72px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center -20px;
+  object-position: top center;
   transform: scale(1.2);
   position: relative;
   z-index: 1;
