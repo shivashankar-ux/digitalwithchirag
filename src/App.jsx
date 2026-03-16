@@ -103,7 +103,7 @@ function Nav() {
           <a href="https://wa.me/919311048234" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: '#25D366', color: 'white', padding: '0.5rem 1rem', borderRadius: '4px', textDecoration: 'none', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '0.04em', transition: 'box-shadow 0.2s, transform 0.2s' }}
             onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 0 20px rgba(37,211,102,0.4)'; e.currentTarget.style.transform = 'translateY(-1px)' }}
             onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'translateY(0)' }}>
-            {waSvg} WhatsApp
+            {waSvg} Consult Now
           </a>
         </div>
 
@@ -131,7 +131,7 @@ function Nav() {
             {fbSvg}
           </a>
           <a href="https://wa.me/919311048234" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', background: '#25D366', color: 'white', padding: '0.5rem 1rem', borderRadius: '4px', textDecoration: 'none', fontWeight: 700, fontSize: '0.82rem' }}>
-            {waSvg} WhatsApp
+            {waSvg} Consult Now
           </a>
         </div>
       </div>
