@@ -83,7 +83,7 @@ function Nav() {
 
         {/* Desktop */}
         <div className="nav-desktop">
-          {['Program', 'About', 'Results'].map(l => (
+          {['Course', 'About Us', 'Blogs'].map(l => (
             <a key={l} href={`#${l.toLowerCase()}`} style={{ color: 'var(--muted)', fontSize: '0.88rem', textDecoration: 'none', letterSpacing: '0.05em', fontWeight: 500, transition: 'color 0.2s' }}
               onMouseEnter={e => e.target.style.color = 'var(--white)'}
               onMouseLeave={e => e.target.style.color = 'var(--muted)'}>
@@ -115,7 +115,7 @@ function Nav() {
 
       {/* Mobile Menu */}
       <div className={`mobile-menu${menuOpen ? ' open' : ''}`}>
-        {['Program', 'About', 'Results'].map(l => (
+        {['Course', 'About Us', 'Blogs'].map(l => (
           <a key={l} href={`#${l.toLowerCase()}`} className="mobile-nav-link" onClick={closeMenu}>{l}</a>
         ))}
         <a href="#contact" className="mobile-nav-link" onClick={closeMenu} style={{ color: 'var(--orange)', fontWeight: 700 }}>Book Free Call</a>
