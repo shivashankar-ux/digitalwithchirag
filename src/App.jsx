@@ -176,7 +176,7 @@ function Hero() {
       <div style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.6rem', background: 'rgba(255,92,26,0.1)', border: '1px solid rgba(255,92,26,0.3)', borderRadius: '100px', padding: '0.7rem 1.6rem', marginBottom: '2rem', animation: 'float 6s ease-in-out infinite' }}>
           <span style={{ width: '9px', height: '9px', borderRadius: '50%', background: 'var(--orange)', display: 'inline-block', boxShadow: '0 0 8px var(--orange)' }} />
-          <span style={{ fontSize: '1rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--orange)' }}>Industry-level Digital Marketing Training with AI-Powered Marketing Skills </span>
+          <span style={{ fontSize: 'clamp(0.65rem, 2vw, 1rem)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--orange)' }}>Industry-level Digital Marketing Training with AI-Powered Marketing Skills</span>
         </div>
 
         <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 'clamp(3.5rem, 7vw, 7.5rem)', lineHeight: 0.9, letterSpacing: '-0.02em', marginBottom: '1.5rem' }}>
