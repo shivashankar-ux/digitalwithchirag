@@ -200,9 +200,27 @@ function Hero() {
 
         <div className="hero-main-grid" style={{ marginTop: "-1rem" }}>
           <div>
-            <p style={{ fontSize: "1.1rem", color: "var(--muted)", lineHeight: 1.8, marginBottom: "2.5rem", animation: "fadeIn 1s ease 0.6s both" }}>
-              Train with <strong style={{ color: "var(--white)", fontWeight: 600 }}>Chirag Atreja</strong> — a digital agency professional with <strong style={{ color: "var(--orange)" }}>{count}+ years</strong> of real campaign experience — and gain practical skills that companies actually hire for.
-            </p>
+            <div style={{ display: "flex", alignItems: "center", gap: "1.2rem", background: "rgba(255,193,7,0.05)", border: "1px solid rgba(255,193,7,0.2)", borderLeft: "4px solid var(--orange)", borderRadius: "12px", padding: "1.2rem 1.4rem", marginBottom: "2.5rem", animation: "fadeIn 1s ease 0.6s both" }}>
+  <img src="/chirag-1.jpg" alt="Chirag Atreja" style={{ width: "64px", height: "64px", borderRadius: "50%", objectFit: "cover", objectPosition: "top center", border: "2px solid var(--orange)", flexShrink: 0, boxShadow: "0 0 12px rgba(255,193,7,0.4)" }} />
+  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+    <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--white)" }}>
+      Chirag Atreja <span style={{ color: "var(--orange)", fontWeight: 600 }}>· {count}+ Years Experience</span>
+    </div>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+      {["WPP", "IPG", "Publicis", "Omnicom", "Havas"].map((a) => (
+        <span key={a} style={{ fontSize: "0.7rem", fontWeight: 700, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "100px", padding: "0.2rem 0.6rem", color: "var(--muted)", letterSpacing: "0.05em" }}>{a}</span>
+      ))}
+    </div>
+    <div style={{ fontSize: "0.82rem", color: "var(--orange)", fontWeight: 700 }}>
+      💰 Handled ₹100 Cr+ Campaigns
+    </div>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+      {["Automobile", "Telecom", "FMCG", "Ecommerce"].map((tag) => (
+        <span key={tag} style={{ fontSize: "0.7rem", fontWeight: 600, background: "rgba(255,92,26,0.1)", border: "1px solid rgba(255,92,26,0.25)", borderRadius: "100px", padding: "0.2rem 0.6rem", color: "var(--white)" }}>{tag}</span>
+      ))}
+    </div>
+  </div>
+</div>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", animation: "fadeIn 1s ease 0.8s both" }}>
               <a href="https://wa.me/919311048234" target="_blank" rel="noreferrer"
                 style={{ background: "var(--orange)", color: "white", padding: "0.9rem 2rem", borderRadius: "6px", textDecoration: "none", fontWeight: 700, fontSize: "0.9rem", letterSpacing: "0.06em", textTransform: "uppercase", boxShadow: "0 0 40px var(--orange-glow)", transition: "transform 0.2s, box-shadow 0.2s", display: "inline-block" }}
