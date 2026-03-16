@@ -187,3 +187,10 @@ body::before {
     padding-bottom: 3.5rem !important;
   }
 }
+
+@media (max-width: 768px) {
+  .hero-badge-text {
+    font-size: 0.65rem !important;
+    letter-spacing: 0.05em !important;
+  }
+}
