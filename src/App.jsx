@@ -283,8 +283,8 @@ function Hero() {
       height: 90px;
       border-radius: 50%;
       object-fit: cover;
-      object-position: center 20%;
-      transform: scale(1.8);
+      object-position: center 10%;
+      transform: scale(1.4);
       position: relative;
       z-index: 1;
       border: 2px solid var(--bg);
