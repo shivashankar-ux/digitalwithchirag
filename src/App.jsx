@@ -279,16 +279,16 @@ function Hero() {
       z-index: 0;
     }
     .avatar-img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center 10%;
-      transform: scale(1.4);
-      position: relative;
-      z-index: 1;
-      border: 2px solid var(--bg);
-    }
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 5%;
+  transform: scale(1.2);
+  position: relative;
+  z-index: 1;
+  border: 2px solid var(--bg);
+}
     .online-dot {
       position: absolute;
       bottom: 4px;
