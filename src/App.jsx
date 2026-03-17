@@ -161,6 +161,199 @@ function Hero() {
 
   return (
     <section style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 5vw", paddingTop: "70px", position: "relative", overflow: "hidden" }}>
+      <style>{`
+        /* ── CHANGE 1: Mentor card mobile fix ── */
+        @keyframes borderGlow {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 1; }
+        }
+        @keyframes pulse-dot {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.4); opacity: 0.6; }
+        }
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .mentor-card {
+          display: flex;
+          align-items: flex-start;
+          gap: 1.4rem;
+          background: rgba(13, 13, 20, 0.85);
+          backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 193, 7, 0.25);
+          border-radius: 20px;
+          padding: 1.4rem;
+          position: relative;
+          overflow: hidden;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .mentor-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 20px 60px rgba(255, 193, 7, 0.15);
+        }
+        .mentor-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 20px;
+          padding: 1px;
+          background: linear-gradient(135deg, rgba(255,193,7,0.6), transparent, rgba(255,92,26,0.4));
+          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          animation: borderGlow 3s ease-in-out infinite;
+          pointer-events: none;
+        }
+        .mentor-card::after {
+          content: '';
+          position: absolute;
+          top: -40%;
+          left: -20%;
+          width: 60%;
+          height: 200%;
+          background: linear-gradient(90deg, transparent, rgba(255,193,7,0.04), transparent);
+          transform: skewX(-15deg);
+          animation: shimmerMove 4s ease-in-out infinite;
+          pointer-events: none;
+        }
+        @keyframes shimmerMove {
+          0% { left: -60%; }
+          100% { left: 120%; }
+        }
+        .avatar-ring {
+          position: relative;
+          flex-shrink: 0;
+        }
+        .avatar-ring::before {
+          content: '';
+          position: absolute;
+          inset: -3px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--orange), rgba(255,92,26,0.8), var(--orange));
+          animation: spin-slow 4s linear infinite;
+          z-index: 0;
+        }
+        .avatar-ring::after {
+          content: '';
+          position: absolute;
+          inset: -6px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, rgba(255,193,7,0.3), transparent);
+          animation: spin-slow 6s linear infinite reverse;
+          z-index: 0;
+        }
+        .avatar-img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          object-fit: cover;
+          object-position: center -20px;
+          transform: scale(1.2);
+          position: relative;
+          z-index: 1;
+          border: 2px solid var(--bg);
+        }
+        .online-dot {
+          position: absolute;
+          bottom: 4px;
+          right: 4px;
+          width: 12px;
+          height: 12px;
+          background: #25D366;
+          border-radius: 50%;
+          border: 2px solid var(--bg);
+          z-index: 2;
+          animation: pulse-dot 2s ease-in-out infinite;
+        }
+        .agency-badge {
+          font-size: 0.68rem;
+          font-weight: 700;
+          background: rgba(255,255,255,0.06);
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 100px;
+          padding: 0.25rem 0.65rem;
+          color: rgba(240,237,232,0.7);
+          letter-spacing: 0.05em;
+          transition: all 0.2s ease;
+          cursor: default;
+        }
+        .agency-badge:hover {
+          background: rgba(255,193,7,0.12);
+          border-color: rgba(255,193,7,0.4);
+          color: var(--orange);
+        }
+        .industry-tag {
+          font-size: 0.68rem;
+          font-weight: 600;
+          background: rgba(255,92,26,0.1);
+          border: 1px solid rgba(255,92,26,0.3);
+          border-radius: 100px;
+          padding: 0.25rem 0.65rem;
+          color: rgba(240,237,232,0.85);
+          transition: all 0.2s ease;
+        }
+        .industry-tag:hover {
+          background: rgba(255,92,26,0.2);
+          color: var(--white);
+        }
+        /* Mobile: compact mentor card */
+        @media (max-width: 600px) {
+          .mentor-card {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 0.9rem;
+            padding: 1rem;
+            margin: 0 4px;
+          }
+          .avatar-img {
+            width: 52px;
+            height: 52px;
+          }
+          .mentor-info {
+            flex: 1;
+            min-width: 0;
+          }
+        }
+
+        /* ── CHANGE 2: Hero badge grid — 2x2 on mobile ── */
+        .hero-main-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+          align-items: start;
+          margin-top: 2rem;
+        }
+        .hero-badge-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+        }
+        @media (max-width: 768px) {
+          .hero-main-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+          .hero-badge-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 0.7rem;
+          }
+          .hero-badge-grid > div {
+            padding: 1rem !important;
+          }
+          .hero-badge-grid > div > div:first-child {
+            font-size: 1.2rem !important;
+            margin-bottom: 0.3rem !important;
+          }
+          .hero-badge-grid > div > div:nth-child(2) {
+            font-size: 1rem !important;
+          }
+          .hero-badge-grid > div > div:nth-child(3) {
+            font-size: 0.72rem !important;
+          }
+        }
+      `}</style>
+
       <div style={{ position: "absolute", top: "20%", right: "10%", width: "500px", height: "500px", borderRadius: "50%", background: "radial-gradient(circle, rgba(255,92,26,0.12) 0%, transparent 70%)", pointerEvents: "none", animation: "float 8s ease-in-out infinite" }} />
       <div style={{ position: "absolute", bottom: "10%", left: "5%", width: "300px", height: "300px", borderRadius: "50%", background: "radial-gradient(circle, rgba(245,166,35,0.07) 0%, transparent 70%)", pointerEvents: "none", animation: "float 10s ease-in-out infinite 2s" }} />
       <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)", backgroundSize: "80px 80px", pointerEvents: "none" }} />
@@ -198,188 +391,50 @@ function Hero() {
           ))}
         </div>
 
-        <div className="hero-main-grid" style={{ marginTop: "-1rem" }}>
+        <div className="hero-main-grid">
           <div>
+            {/* CHANGE 1: Mentor card — cleaner mobile layout */}
             <div style={{ position: "relative", marginBottom: "2.5rem", animation: "fadeIn 1s ease 0.6s both" }}>
-  <style>{`
-    @keyframes borderGlow {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
-    }
-    @keyframes pulse-dot {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.4); opacity: 0.6; }
-    }
-    .mentor-card {
-      display: flex;
-      align-items: center;
-      gap: 1.4rem;
-      background: rgba(13, 13, 20, 0.85);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 193, 7, 0.25);
-      border-radius: 20px;
-      padding: 1.4rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .mentor-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 60px rgba(255, 193, 7, 0.15);
-    }
-    .mentor-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 20px;
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(255,193,7,0.6), transparent, rgba(255,92,26,0.4));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      animation: borderGlow 3s ease-in-out infinite;
-      pointer-events: none;
-    }
-    .mentor-card::after {
-      content: '';
-      position: absolute;
-      top: -40%;
-      left: -20%;
-      width: 60%;
-      height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255,193,7,0.04), transparent);
-      transform: skewX(-15deg);
-      animation: shimmerMove 4s ease-in-out infinite;
-      pointer-events: none;
-    }
-    @keyframes shimmerMove {
-      0% { left: -60%; }
-      100% { left: 120%; }
-    }
-    .avatar-ring {
-      position: relative;
-      flex-shrink: 0;
-    }
-    .avatar-ring::before {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--orange), rgba(255,92,26,0.8), var(--orange));
-      animation: spin-slow 4s linear infinite;
-      z-index: 0;
-    }
-    .avatar-ring::after {
-      content: '';
-      position: absolute;
-      inset: -6px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(255,193,7,0.3), transparent);
-      animation: spin-slow 6s linear infinite reverse;
-      z-index: 0;
-    }
-    .avatar-img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center -20px;
-  transform: scale(1.2);
-  position: relative;
-  z-index: 1;
-  border: 2px solid var(--bg);
-}
-    .online-dot {
-      position: absolute;
-      bottom: 4px;
-      right: 4px;
-      width: 12px;
-      height: 12px;
-      background: #25D366;
-      border-radius: 50%;
-      border: 2px solid var(--bg);
-      z-index: 2;
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-    .agency-badge {
-      font-size: 0.68rem;
-      font-weight: 700;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 100px;
-      padding: 0.25rem 0.65rem;
-      color: rgba(240,237,232,0.7);
-      letter-spacing: 0.05em;
-      transition: all 0.2s ease;
-      cursor: default;
-    }
-    .agency-badge:hover {
-      background: rgba(255,193,7,0.12);
-      border-color: rgba(255,193,7,0.4);
-      color: var(--orange);
-    }
-    .industry-tag {
-      font-size: 0.68rem;
-      font-weight: 600;
-      background: rgba(255,92,26,0.1);
-      border: 1px solid rgba(255,92,26,0.3);
-      border-radius: 100px;
-      padding: 0.25rem 0.65rem;
-      color: rgba(240,237,232,0.85);
-      transition: all 0.2s ease;
-    }
-    .industry-tag:hover {
-      background: rgba(255,92,26,0.2);
-      color: var(--white);
-    }
-    @media (max-width: 480px) {
-  .mentor-card {
-    flex-direction: row;
-    align-items: flex-start;
-        gap: 1rem;
-      }
-    }
-  `}</style>
+              <div className="mentor-card">
+                {/* Avatar */}
+                <div className="avatar-ring">
+                  <img src="/chirag-2.jpg" alt="Chirag Atreja" className="avatar-img" />
+                  <div className="online-dot" />
+                </div>
 
-  <div className="mentor-card">
-    {/* Avatar */}
-    <div className="avatar-ring">
-      <img src="/chirag-2.jpg" alt="Chirag Atreja" className="avatar-img" />
-      <div className="online-dot" />
-    </div>
+                {/* Info */}
+                <div className="mentor-info" style={{ display: "flex", flexDirection: "column", gap: "0.5rem", flex: 1, minWidth: 0 }}>
+                  {/* Name */}
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+                    <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "1rem", color: "var(--white)" }}>Chirag Atreja</span>
+                    <span style={{ background: "rgba(255,193,7,0.15)", border: "1px solid rgba(255,193,7,0.4)", borderRadius: "100px", padding: "0.15rem 0.6rem", fontSize: "0.68rem", fontWeight: 700, color: "var(--orange)", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>⚡ {count}+ YRS</span>
+                  </div>
 
-    {/* Info */}
-    <div style={{ display: "flex", flexDirection: "column", gap: "0.55rem", flex: 1 }}>
-      {/* Name */}
-      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
-        <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "1rem", color: "var(--white)" }}>Chirag Atreja</span>
-        <span style={{ background: "rgba(255,193,7,0.15)", border: "1px solid rgba(255,193,7,0.4)", borderRadius: "100px", padding: "0.15rem 0.6rem", fontSize: "0.68rem", fontWeight: 700, color: "var(--orange)", letterSpacing: "0.05em" }}>⚡ {count}+ YRS</span>
-      </div>
+                  {/* Agencies */}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem", alignItems: "center" }}>
+                    <span style={{ fontSize: "0.65rem", color: "var(--muted)", fontWeight: 600, marginRight: "0.1rem", whiteSpace: "nowrap" }}>Worked at:</span>
+                    {["WPP", "IPG", "Publicis", "Omnicom", "Havas"].map((a) => (
+                      <span key={a} className="agency-badge">{a}</span>
+                    ))}
+                  </div>
 
-      {/* Agencies */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", alignItems: "center" }}>
-        <span style={{ fontSize: "0.65rem", color: "var(--muted)", fontWeight: 600, marginRight: "0.2rem" }}>Worked at:</span>
-        {["WPP", "IPG", "Publicis", "Omnicom", "Havas"].map((a) => (
-          <span key={a} className="agency-badge">{a}</span>
-        ))}
-      </div>
+                  {/* Campaign stat */}
+                  <div>
+                    <span style={{ display: "inline-flex", alignItems: "center", fontSize: "0.72rem", fontWeight: 800, color: "var(--orange)", background: "rgba(255,193,7,0.1)", border: "1px solid rgba(255,193,7,0.3)", borderRadius: "8px", padding: "0.3rem 0.7rem", letterSpacing: "0.03em" }}>
+                      💰 Handled ₹100 Cr+ Campaigns
+                    </span>
+                  </div>
 
-      {/* Campaign stat */}
-      <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-        <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--orange)", background: "rgba(255,193,7,0.1)", border: "1px solid rgba(255,193,7,0.3)", borderRadius: "8px", padding: "0.3rem 0.7rem", letterSpacing: "0.03em" }}>
-          💰 Handled ₹100 Cr+ Campaigns
-        </span>
-      </div>
+                  {/* Industry tags */}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
+                    {["Automobile", "Telecom", "FMCG", "Ecommerce"].map((tag) => (
+                      <span key={tag} className="industry-tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
 
-      {/* Industry tags */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
-        {["Automobile", "Telecom", "FMCG", "Ecommerce"].map((tag) => (
-          <span key={tag} className="industry-tag">{tag}</span>
-        ))}
-      </div>
-    </div>
-  </div>
-</div>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", animation: "fadeIn 1s ease 0.8s both" }}>
               <a href="https://wa.me/919311048234" target="_blank" rel="noreferrer"
                 style={{ background: "var(--orange)", color: "white", padding: "0.9rem 2rem", borderRadius: "6px", textDecoration: "none", fontWeight: 700, fontSize: "0.9rem", letterSpacing: "0.06em", textTransform: "uppercase", boxShadow: "0 0 40px var(--orange-glow)", transition: "transform 0.2s, box-shadow 0.2s", display: "inline-block" }}
@@ -387,10 +442,10 @@ function Hero() {
                 onMouseLeave={(e) => { e.target.style.transform = "translateY(0)"; e.target.style.boxShadow = "0 0 40px var(--orange-glow)"; }}>
                 Start Learning →
               </a>
-              
             </div>
           </div>
 
+          {/* CHANGE 2: 4 stat cards — 2x2 grid (already via .hero-badge-grid CSS) */}
           <div className="hero-badge-grid" style={{ animation: "fadeIn 1s ease 0.5s both" }}>
             {[
               { icon: "📅", title: "3 +1 Months", sub: "Course + Internship" },
@@ -399,7 +454,7 @@ function Hero() {
               { icon: "🤖", title: "AI Tools", sub: "Included in curriculum" },
             ].map((s, i) => (
               <div key={i} data-hover
-                style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "12px", padding: "1.4rem", transition: "border-color 0.3s, transform 0.3s, box-shadow 0.3s", animationDelay: `${i * 0.1}s` }}
+                style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "12px", padding: "1.4rem", transition: "border-color 0.3s, transform 0.3s, box-shadow 0.3s" }}
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(255,92,26,0.4)"; e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 20px 40px rgba(255,92,26,0.1)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
                 <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{s.icon}</div>
@@ -414,35 +469,10 @@ function Hero() {
   );
 }
 
-/* ─── FOUNDER CAROUSEL ───────────────────────────────────────── */
+/* ─── FOUNDER CAROUSEL (CHANGE 3: carousel removed, only text/bio remains) ── */
 function FounderCarousel() {
-  const [current, setCurrent] = useState(0);
-  const [animating, setAnimating] = useState(false);
-  const timerRef = useRef(null);
-
-  const slides = [
-    { image: "/chirag-1.jpg", quote: "I didn't just study digital marketing — I lived it inside the world's top agencies for over a decade.", tag: "12+ Years of Real Agency Experience" },
-    { image: "/chirag-2.jpg", quote: "Every campaign I teach, I've actually run. Every tool I show you, I've used on real client budgets.", tag: "Trained by Global Networks — Publicis, WPP, Havas" },
-    { image: "/chirag-3.jpg", quote: "DigitalWithChirag exists because the industry needed training that actually prepares you for the real thing.", tag: "Founder, DigitalWithChirag" },
-  ];
-
-  const goTo = (index) => { if (animating) return; setAnimating(true); setCurrent(index); setTimeout(() => setAnimating(false), 500); };
-  const next = () => goTo((current + 1) % slides.length);
-  const prev = () => goTo((current - 1 + slides.length) % slides.length);
-
-  useEffect(() => {
-    timerRef.current = setInterval(() => { setCurrent((c) => (c + 1) % 3); }, 3000);
-    return () => clearInterval(timerRef.current);
-  }, []);
-
   return (
     <section style={{ background: "var(--bg)", padding: "clamp(4rem, 8vw, 7rem) 5vw", overflow: "hidden" }}>
-      <style>{`
-        .founder-img { opacity: 0; transform: scale(1.04); transition: opacity 0.5s ease, transform 0.5s ease; }
-        .founder-img.loaded { opacity: 1; transform: scale(1); }
-        .founder-text-in { animation: founderTextIn 0.5s cubic-bezier(0.16,1,0.3,1) both; }
-        @keyframes founderTextIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-      `}</style>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="reveal" style={{ marginBottom: "3rem" }}>
           <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)", display: "block", marginBottom: "0.8rem" }}>Meet Your Mentor</span>
@@ -450,42 +480,31 @@ function FounderCarousel() {
             The face behind<br /><span style={{ color: "var(--orange)" }}>DigitalWithChirag</span>
           </h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 340px), 1fr))", gap: "3rem", alignItems: "center", borderRadius: "20px", background: "var(--surface)", border: "1px solid var(--border)", overflow: "hidden" }}>
-          <div style={{ position: "relative", aspectRatio: "3/4", overflow: "hidden", minHeight: "340px" }}>
-            {slides.map((s, i) => (
-              <img key={i} src={s.image} alt={`Chirag Atreja ${i + 1}`} className={`founder-img${i === current ? " loaded" : ""}`}
-                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", pointerEvents: "none" }} />
-            ))}
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, transparent 60%, var(--surface))", pointerEvents: "none" }} />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(5,5,8,0.5) 0%, transparent 40%)", pointerEvents: "none" }} />
-          </div>
-          <div style={{ padding: "clamp(1.5rem, 4vw, 3rem)", paddingLeft: "0" }} className="founder-text-in" key={current}>
-            <div style={{ display: "inline-block", background: "rgba(255,193,7,0.1)", border: "1px solid rgba(255,193,7,0.3)", borderRadius: "100px", padding: "0.35rem 1rem", marginBottom: "2rem" }}>
-              <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--orange)" }}>{slides[current].tag}</span>
-            </div>
-            <blockquote style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "clamp(1.3rem, 2.5vw, 2rem)", lineHeight: 1.3, color: "var(--white)", marginBottom: "2.5rem", borderLeft: "3px solid var(--orange)", paddingLeft: "1.2rem" }}>
-              "{slides[current].quote}"
-            </blockquote>
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2.5rem" }}>
-              <div style={{ width: "40px", height: "40px", borderRadius: "50%", background: "var(--orange)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "1rem", flexShrink: 0 }}>C</div>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--white)" }}>Chirag Atreja</div>
-                <div style={{ fontSize: "0.78rem", color: "var(--orange)", fontWeight: 600 }}>Digital Marketing Expert · 12+ Years</div>
+
+        {/* Bio cards — no carousel */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "1.5rem" }} className="reveal">
+          {[
+            { tag: "12+ Years of Real Agency Experience", quote: "I didn't just study digital marketing — I lived it inside the world's top agencies for over a decade." },
+            { tag: "Trained by Global Networks — Publicis, WPP, Havas", quote: "Every campaign I teach, I've actually run. Every tool I show you, I've used on real client budgets." },
+            { tag: "Founder, DigitalWithChirag", quote: "DigitalWithChirag exists because the industry needed training that actually prepares you for the real thing." },
+          ].map((item, i) => (
+            <div key={i}
+              style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "16px", padding: "1.8rem", borderLeft: "3px solid var(--orange)", transition: "transform 0.3s, box-shadow 0.3s" }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 20px 40px rgba(255,92,26,0.1)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
+              <div style={{ display: "inline-block", background: "rgba(255,193,7,0.1)", border: "1px solid rgba(255,193,7,0.3)", borderRadius: "100px", padding: "0.25rem 0.8rem", marginBottom: "1rem" }}>
+                <span style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--orange)" }}>{item.tag}</span>
               </div>
+              <p style={{ color: "rgba(240,237,232,0.8)", lineHeight: 1.7, fontSize: "0.95rem", fontStyle: "italic" }}>"{item.quote}"</p>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <button onClick={prev} style={{ width: "40px", height: "40px", borderRadius: "50%", background: "var(--bg)", border: "1px solid var(--border)", color: "var(--white)", fontSize: "1rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "border-color 0.2s, background 0.2s", flexShrink: 0 }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--orange)"; e.currentTarget.style.background = "rgba(255,193,7,0.1)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.background = "var(--bg)"; }}>←</button>
-              <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-                {slides.map((_, i) => (
-                  <button key={i} onClick={() => goTo(i)} style={{ width: i === current ? "24px" : "8px", height: "8px", borderRadius: "100px", background: i === current ? "var(--orange)" : "rgba(255,255,255,0.2)", border: "none", cursor: "pointer", padding: 0, transition: "all 0.3s ease" }} />
-                ))}
-              </div>
-              <button onClick={next} style={{ width: "40px", height: "40px", borderRadius: "50%", background: "var(--bg)", border: "1px solid var(--border)", color: "var(--white)", fontSize: "1rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "border-color 0.2s, background 0.2s", flexShrink: 0 }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--orange)"; e.currentTarget.style.background = "rgba(255,193,7,0.1)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.background = "var(--bg)"; }}>→</button>
-            </div>
+          ))}
+        </div>
+
+        <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "1rem", marginTop: "2.5rem" }}>
+          <div style={{ width: "44px", height: "44px", borderRadius: "50%", background: "var(--orange)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "1rem", flexShrink: 0 }}>C</div>
+          <div>
+            <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--white)" }}>Chirag Atreja</div>
+            <div style={{ fontSize: "0.78rem", color: "var(--orange)", fontWeight: 600 }}>Digital Marketing Expert · 12+ Years</div>
           </div>
         </div>
       </div>
@@ -602,7 +621,7 @@ function Curriculum() {
   );
 }
 
-/* ─── TOOLS MARQUEE ─────────────────────────────────────────── */
+/* ─── TOOLS MARQUEE (CHANGE 6: uniform logo sizes) ──────────── */
 function ToolsMarquee() {
   const tools = [
     { name: "Google Ads", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" },
@@ -622,6 +641,7 @@ function ToolsMarquee() {
       <style>{`
         .tools-track {
           display: flex;
+          align-items: center;
           animation: marquee 30s linear infinite;
           width: max-content;
         }
@@ -629,26 +649,36 @@ function ToolsMarquee() {
         .tool-pill {
           display: flex;
           align-items: center;
-          gap: 0.6rem;
+          gap: 0.75rem;
           background: var(--surface);
           border: 1px solid var(--border);
           border-radius: 100px;
-          padding: 0.8rem 1.6rem;
+          padding: 0.75rem 1.6rem;
           margin: 0 0.6rem;
           white-space: nowrap;
           transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
           cursor: default;
+          height: 60px;
         }
         .tool-pill:hover {
           border-color: rgba(255,193,7,0.5);
           box-shadow: 0 0 20px rgba(255,193,7,0.15);
           transform: translateY(-2px);
         }
+        /* CHANGE 6: All logos same container size, object-fit contain */
+        .tool-logo-wrap {
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
         .tool-logo {
-          width: 36px;
-          height: 36px;
+          width: 32px;
+          height: 32px;
           object-fit: contain;
-          border-radius: 4px;
+          display: block;
         }
         .tool-name {
           font-size: 0.92rem;
@@ -658,80 +688,102 @@ function ToolsMarquee() {
         }
       `}</style>
 
-      {/* Title */}
       <div style={{ textAlign: "center", marginBottom: "2rem", padding: "0 5vw" }}>
         <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)" }}>
           Platforms & Tools You Will Master
         </span>
       </div>
 
-      {/* Scrolling row */}
-      <div style={{ overflow: "hidden", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "1rem 0", background: "var(--surface)" }}>
+      <div style={{ overflow: "hidden", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "0.6rem 0", background: "var(--surface)" }}>
         <div className="tools-track">
           {all.map((tool, i) => (
             <div key={i} className="tool-pill">
-              <img
-                src={tool.logo}
-                alt={tool.name}
-                className="tool-logo"
-                onError={(e) => { e.target.style.display = "none"; }}
-              />
+              <div className="tool-logo-wrap">
+                <img
+                  src={tool.logo}
+                  alt={tool.name}
+                  className="tool-logo"
+                  onError={(e) => { e.target.style.display = "none"; }}
+                />
+              </div>
               <span className="tool-name">{tool.name}</span>
             </div>
           ))}
         </div>
       </div>
     </section>
-    
   );
-  
 }
 
-/* ─── COMPARISON ─────────────────────────────────────────────── */
+/* ─── COMPARISON (CHANGE 4: clean checklist, no Us/Others) ───── */
 function Comparison() {
-  const rows = [
-    ["Training Style", "✓ Practical, hands-on live training", "Mostly theory-based"],
-    ["Content", "✓ Live platform + new-age tools", "Recorded / outdated modules"],
-    ["Trainer", "✓ 12+ years real agency experience", "Limited agency exposure"],
-    ["Curriculum", "✓ Industry-aligned, always updated", "Generic syllabus"],
-    ["Campaigns", "✓ Real campaign breakdowns", "Limited real exposure"],
-    ["Career Support", "✓ Structured job prep & interview training", "Empty placement promises"],
+  const points = [
+    { icon: "🎯", text: "Practical, hands-on live training — not theory-based modules" },
+    { icon: "🖥️", text: "Live platform access with new-age AI tools included" },
+    { icon: "🏆", text: "Trainer with 12+ years of real global agency experience" },
+    { icon: "📋", text: "Industry-aligned curriculum, always updated" },
+    { icon: "📊", text: "Real campaign breakdowns from actual client budgets" },
+    { icon: "💼", text: "Structured job prep, interview training & placement support" },
   ];
+
   return (
     <section id="results" style={{ padding: "clamp(4rem, 8vw, 8rem) 5vw", background: "var(--surface)" }}>
       <style>{`
-        .comp-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
-        .comp-card:hover { border-color: rgba(255,193,7,0.3); transform: translateY(-3px); }
-        .comp-label { grid-column: 1 / -1; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border); }
-        .comp-us { padding: 1rem 1.2rem; background: rgba(255,193,7,0.06); border-radius: 10px 0 0 10px; border: 1px solid rgba(255,193,7,0.15); }
-        .comp-them { padding: 1rem 1.2rem; background: rgba(255,255,255,0.02); border-radius: 0 10px 10px 0; border: 1px solid var(--border); border-left: none; }
-        .comp-col-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
-        .comp-col-text { font-size: 0.9rem; font-weight: 600; line-height: 1.5; }
-        .comp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); gap: 1rem; }
+        .checklist-item {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem 1.4rem;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+          transition: background 0.2s, transform 0.2s;
+          border-radius: 8px;
+        }
+        .checklist-item:last-child { border-bottom: none; }
+        .checklist-item:hover {
+          background: rgba(255,193,7,0.05);
+          transform: translateX(6px);
+        }
+        .check-icon {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: rgba(255,92,26,0.15);
+          border: 1.5px solid rgba(255,92,26,0.4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          font-size: 0.75rem;
+          font-weight: 900;
+          color: var(--orange);
+        }
+        .checklist-emoji {
+          font-size: 1.1rem;
+          flex-shrink: 0;
+          width: 24px;
+          text-align: center;
+        }
+        @media (max-width: 600px) {
+          .checklist-item {
+            padding: 0.9rem 1rem;
+            gap: 0.8rem;
+          }
+        }
       `}</style>
-      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
         <div className="reveal" style={{ marginBottom: "3.5rem" }}>
           <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)", display: "block", marginBottom: "1rem" }}>Why Choose Us</span>
           <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 4rem)", lineHeight: 0.95 }}>
             What makes us<br /><span style={{ color: "var(--orange)" }}>different</span>
           </h2>
         </div>
-        <div className="reveal" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", maxWidth: "440px", marginBottom: "1rem", marginLeft: "auto", marginRight: "0" }}>
-          <div style={{ textAlign: "center", padding: "0.5rem", fontSize: "0.72rem", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--orange)" }}>DigitalWithChirag</div>
-          <div style={{ textAlign: "center", padding: "0.5rem", fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--muted)" }}>Others</div>
-        </div>
-        <div className="comp-grid reveal">
-          {rows.map(([label, us, them], i) => (
-            <div key={i} className="comp-card">
-              <div className="comp-label">{label}</div>
-              <div className="comp-us">
-                <div className="comp-col-label" style={{ color: "var(--orange)" }}>✦ Us</div>
-                <div className="comp-col-text" style={{ color: "#ffcf60" }}>{us.replace("✓ ", "")}</div>
-              </div>
-              <div className="comp-them">
-                <div className="comp-col-label" style={{ color: "rgba(240,237,232,0.3)" }}>✗ Others</div>
-                <div className="comp-col-text" style={{ color: "rgba(240,237,232,0.3)" }}>{them}</div>
-              </div>
+
+        <div className="reveal" style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "16px", overflow: "hidden" }}>
+          {points.map((p, i) => (
+            <div key={i} className="checklist-item">
+              <div className="checklist-emoji">{p.icon}</div>
+              <div className="check-icon">✓</div>
+              <span style={{ fontSize: "0.97rem", color: "var(--white)", fontWeight: 500, lineHeight: 1.5 }}>{p.text}</span>
             </div>
           ))}
         </div>
@@ -740,15 +792,15 @@ function Comparison() {
   );
 }
 
-/* ─── OUTCOMES ───────────────────────────────────────────────── */
+/* ─── OUTCOMES (CHANGE 5: updated content) ───────────────────── */
 function Outcomes() {
   const outcomes = [
-    { icon: "🚀", text: "Launch and optimize live ad campaigns confidently" },
+    { icon: "🚀", text: "Launch Google & Meta ad campaigns" },
+    { icon: "⚙️", text: "Optimize Ad Campaigns Confidently" },
     { icon: "💡", text: "Crack digital marketing interviews" },
-    { icon: "📁", text: "Build a professional marketing portfolio" },
-    { icon: "📊", text: "Plan budgets like an agency professional" },
-    { icon: "📈", text: "Scale campaigns using data" },
-    { icon: "🏪", text: "Run your own business ads independently" },
+    { icon: "📊", text: "Plan Budgets like an agency professional" },
+    { icon: "📈", text: "Create Reports and Generate Insights" },
+    { icon: "🏪", text: "Run digital marketing for your business" },
   ];
   return (
     <section style={{ padding: "5rem 5vw", background: "var(--bg)" }}>
@@ -775,44 +827,125 @@ function Outcomes() {
   );
 }
 
-/* ─── SHOWCASE VIDEO ─────────────────────────────────────────── */
-function TestimonialVideos() {
+/* ─── ABOUT (CHANGE 3: carousel placed here instead of video) ── */
+function AboutCarousel() {
+  const [current, setCurrent] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const timerRef = useRef(null);
+
+  const slides = [
+    { image: "/chirag-1.jpg", quote: "I didn't just study digital marketing — I lived it inside the world's top agencies for over a decade.", tag: "12+ Years of Real Agency Experience" },
+    { image: "/chirag-2.jpg", quote: "Every campaign I teach, I've actually run. Every tool I show you, I've used on real client budgets.", tag: "Trained by Global Networks — Publicis, WPP, Havas" },
+    { image: "/chirag-3.jpg", quote: "DigitalWithChirag exists because the industry needed training that actually prepares you for the real thing.", tag: "Founder, DigitalWithChirag" },
+  ];
+
+  const goTo = (index) => {
+    if (animating) return;
+    setAnimating(true);
+    setCurrent(index);
+    setTimeout(() => setAnimating(false), 500);
+  };
+  const next = () => goTo((current + 1) % slides.length);
+  const prev = () => goTo((current - 1 + slides.length) % slides.length);
+
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      setCurrent((c) => (c + 1) % 3);
+    }, 3000);
+    return () => clearInterval(timerRef.current);
+  }, []);
+
   return (
     <div style={{ position: "relative", width: "100%" }}>
+      <style>{`
+        .about-carousel-img {
+          opacity: 0;
+          transform: scale(1.04);
+          transition: opacity 0.5s ease, transform 0.5s ease;
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top center;
+          pointer-events: none;
+        }
+        .about-carousel-img.active {
+          opacity: 1;
+          transform: scale(1);
+          z-index: 2;
+        }
+        .about-carousel-img.inactive {
+          opacity: 0;
+          z-index: 1;
+        }
+      `}</style>
       <div style={{ position: "relative", width: "100%", maxWidth: "320px", margin: "0 auto" }}>
-        <div style={{ position: "relative", aspectRatio: "9/16", borderRadius: "32px", overflow: "hidden", border: "2px solid var(--border)", boxShadow: "0 0 60px rgba(255,193,7,0.15), 0 40px 80px rgba(0,0,0,0.5)", background: "var(--bg)" }}>
-          <video src="/showcase.mp4" controls playsInline style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top, rgba(5,5,8,0.85) 0%, transparent 50%)", padding: "2rem 1.2rem 3.5rem", pointerEvents: "none" }}>
-            <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.95rem", color: "var(--white)" }}>Real Campaign Work</div>
-            <div style={{ fontSize: "0.75rem", color: "var(--orange)", fontWeight: 600, marginTop: "0.2rem" }}>By Chirag Atreja · 12+ Years Experience</div>
+        <div style={{ position: "relative", aspectRatio: "3/4", borderRadius: "32px", overflow: "hidden", border: "2px solid var(--border)", boxShadow: "0 0 60px rgba(255,193,7,0.15), 0 40px 80px rgba(0,0,0,0.5)", background: "var(--bg)" }}>
+          {slides.map((s, i) => (
+            <img
+              key={i}
+              src={s.image}
+              alt={`Chirag Atreja ${i + 1}`}
+              className={`about-carousel-img${i === current ? " active" : " inactive"}`}
+            />
+          ))}
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(5,5,8,0.85) 0%, transparent 50%)", pointerEvents: "none", zIndex: 3 }} />
+          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "1.5rem 1.2rem 3.5rem", zIndex: 4, pointerEvents: "none" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.95rem", color: "var(--white)" }}>Chirag Atreja</div>
+            <div style={{ fontSize: "0.75rem", color: "var(--orange)", fontWeight: 600, marginTop: "0.2rem" }}>{slides[current].tag}</div>
           </div>
         </div>
+
+        {/* 12+ Years floating badge */}
         <div style={{ position: "absolute", bottom: "-15px", right: "-15px", background: "var(--orange)", borderRadius: "12px", padding: "0.8rem 1.2rem", boxShadow: "0 10px 40px var(--orange-glow)", animation: "float 4s ease-in-out infinite", zIndex: 10 }}>
           <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "1.5rem", lineHeight: 1 }}>12+</div>
           <div style={{ fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}>Years Exp.</div>
+        </div>
+
+        {/* Carousel controls */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem", marginTop: "2.5rem" }}>
+          <button onClick={prev} style={{ width: "36px", height: "36px", borderRadius: "50%", background: "var(--bg)", border: "1px solid var(--border)", color: "var(--white)", fontSize: "1rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "border-color 0.2s, background 0.2s" }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--orange)"; e.currentTarget.style.background = "rgba(255,193,7,0.1)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.background = "var(--bg)"; }}>←</button>
+          <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+            {slides.map((_, i) => (
+              <button key={i} onClick={() => goTo(i)} style={{ width: i === current ? "24px" : "8px", height: "8px", borderRadius: "100px", background: i === current ? "var(--orange)" : "rgba(255,255,255,0.2)", border: "none", cursor: "pointer", padding: 0, transition: "all 0.3s ease" }} />
+            ))}
+          </div>
+          <button onClick={next} style={{ width: "36px", height: "36px", borderRadius: "50%", background: "var(--bg)", border: "1px solid var(--border)", color: "var(--white)", fontSize: "1rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "border-color 0.2s, background 0.2s" }}
+            onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--orange)"; e.currentTarget.style.background = "rgba(255,193,7,0.1)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.background = "var(--bg)"; }}>→</button>
         </div>
       </div>
     </div>
   );
 }
 
-/* ─── ABOUT ──────────────────────────────────────────────────── */
 function About() {
   const agencies = ["Publicis", "WPP", "Havas", "Omnicom", "IPG"];
   return (
     <section id="about" style={{ padding: "5rem 5vw", background: "var(--surface)", position: "relative", overflow: "hidden" }}>
+      <style>{`
+        .about-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: center;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+          .about-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+          }
+        }
+      `}</style>
       <div style={{ position: "absolute", top: "50%", right: "-10%", transform: "translateY(-50%)", width: "400px", height: "400px", borderRadius: "50%", background: "radial-gradient(circle, rgba(255,92,26,0.06) 0%, transparent 70%)", pointerEvents: "none" }} />
-      <div className="about-grid" style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div className="about-grid">
         <div className="reveal-left">
-          <style>{`
-            .vid-card { position: absolute; inset: 0; transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-            .vid-card.active { opacity: 1; transform: scale(1); z-index: 2; }
-            .vid-card.inactive { opacity: 0; transform: scale(0.96); z-index: 1; }
-            .vid-dot { width: 8px; height: 8px; border-radius: 100px; border: none; cursor: pointer; padding: 0; transition: all 0.3s ease; }
-            .vid-dot.active { width: 24px; background: var(--orange); }
-            .vid-dot.inactive { background: rgba(255,255,255,0.2); }
-          `}</style>
-          <TestimonialVideos />
+          <AboutCarousel />
         </div>
         <div className="reveal-right">
           <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)", display: "block", marginBottom: "1rem" }}>About Chirag</span>
@@ -868,7 +1001,6 @@ function CTA() {
             onMouseLeave={(e) => { e.target.style.transform = "translateY(0) scale(1)"; e.target.style.boxShadow = "0 0 60px var(--orange-glow)"; }}>
             Enroll Now →
           </a>
-          
         </div>
       </div>
     </section>
@@ -922,7 +1054,6 @@ export default function App() {
       <ForWhom />
       <Curriculum />
       <ToolsMarquee />
-
       <Comparison />
       <Outcomes />
       <About />
