@@ -469,10 +469,64 @@ function Hero() {
   );
 }
 
-/* ─── FOUNDER CAROUSEL (CHANGE 3: carousel removed, only text/bio remains) ── */
+/* ─── FOUNDER CAROUSEL — scroll trigger, slide in from left ─── */
 function FounderCarousel() {
+  const cardRefs = useRef([]);
+
+  useEffect(() => {
+    const observers = [];
+    cardRefs.current.forEach((el, i) => {
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimeout(() => {
+                el.style.opacity = "1";
+                el.style.transform = "translateX(0)";
+              }, i * 180);
+              obs.disconnect();
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const cards = [
+    { tag: "12+ Years of Real Agency Experience", quote: "I didn't just study digital marketing — I lived it inside the world's top agencies for over a decade." },
+    { tag: "Trained by Global Networks — Publicis, WPP, Havas", quote: "Every campaign I teach, I've actually run. Every tool I show you, I've used on real client budgets." },
+    { tag: "Founder, DigitalWithChirag", quote: "DigitalWithChirag exists because the industry needed training that actually prepares you for the real thing." },
+  ];
+
   return (
     <section style={{ background: "var(--bg)", padding: "clamp(4rem, 8vw, 7rem) 5vw", overflow: "hidden" }}>
+      <style>{`
+        .mentor-slide-card {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          padding: 1.8rem;
+          border-left: 3px solid var(--orange);
+          opacity: 0;
+          transform: translateX(-60px);
+          transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s, border-color 0.3s;
+        }
+        .mentor-slide-card:hover {
+          transform: translateX(0) translateY(-4px) !important;
+          box-shadow: 0 20px 40px rgba(255,92,26,0.12);
+          border-color: rgba(255,92,26,0.35);
+        }
+        @media (max-width: 600px) {
+          .mentor-slide-card {
+            padding: 1.3rem;
+          }
+        }
+      `}</style>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="reveal" style={{ marginBottom: "3rem" }}>
           <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)", display: "block", marginBottom: "0.8rem" }}>Meet Your Mentor</span>
@@ -481,27 +535,25 @@ function FounderCarousel() {
           </h2>
         </div>
 
-        {/* Bio cards — no carousel */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "1.5rem" }} className="reveal">
-          {[
-            { tag: "12+ Years of Real Agency Experience", quote: "I didn't just study digital marketing — I lived it inside the world's top agencies for over a decade." },
-            { tag: "Trained by Global Networks — Publicis, WPP, Havas", quote: "Every campaign I teach, I've actually run. Every tool I show you, I've used on real client budgets." },
-            { tag: "Founder, DigitalWithChirag", quote: "DigitalWithChirag exists because the industry needed training that actually prepares you for the real thing." },
-          ].map((item, i) => (
-            <div key={i}
-              style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "16px", padding: "1.8rem", borderLeft: "3px solid var(--orange)", transition: "transform 0.3s, box-shadow 0.3s" }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 20px 40px rgba(255,92,26,0.1)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "1.5rem" }}>
+          {cards.map((item, i) => (
+            <div
+              key={i}
+              className="mentor-slide-card"
+              ref={(el) => (cardRefs.current[i] = el)}
+            >
               <div style={{ display: "inline-block", background: "rgba(255,193,7,0.1)", border: "1px solid rgba(255,193,7,0.3)", borderRadius: "100px", padding: "0.25rem 0.8rem", marginBottom: "1rem" }}>
                 <span style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--orange)" }}>{item.tag}</span>
               </div>
-              <p style={{ color: "rgba(240,237,232,0.8)", lineHeight: 1.7, fontSize: "0.95rem", fontStyle: "italic" }}>"{item.quote}"</p>
+              <p style={{ color: "rgba(240,237,232,0.85)", lineHeight: 1.75, fontSize: "0.95rem", fontStyle: "italic", margin: 0 }}>
+                "{item.quote}"
+              </p>
             </div>
           ))}
         </div>
 
         <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "1rem", marginTop: "2.5rem" }}>
-          <div style={{ width: "44px", height: "44px", borderRadius: "50%", background: "var(--orange)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "1rem", flexShrink: 0 }}>C</div>
+          <div style={{ width: "44px", height: "44px", borderRadius: "50%", background: "var(--orange)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "1rem", flexShrink: 0, color: "white" }}>C</div>
           <div>
             <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--white)" }}>Chirag Atreja</div>
             <div style={{ fontSize: "0.78rem", color: "var(--orange)", fontWeight: 600 }}>Digital Marketing Expert · 12+ Years</div>
