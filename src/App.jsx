@@ -624,15 +624,15 @@ function Curriculum() {
 /* ─── TOOLS MARQUEE (CHANGE 6: uniform logo sizes) ──────────── */
 function ToolsMarquee() {
   const tools = [
-    { name: "Google Ads", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Ads_logo.svg" },
-    { name: "Meta Ads", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" },
-    { name: "YouTube", logo: "https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" },
-    { name: "DV360", logo: "https://www.gstatic.com/images/branding/product/2x/display_video_360_64dp.png" },
-    { name: "Google Analytics", logo: "https://upload.wikimedia.org/wikipedia/commons/8/89/Google_Analytics_4_icon_2021.svg" },
-    { name: "ChatGPT", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" },
-    { name: "Canva", logo: "https://upload.wikimedia.org/wikipedia/commons/b/bb/Canva_Logo.svg" },
-    { name: "Comscore", logo: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Comscore_logo.svg" },
-    { name: "GWI", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4f/GWI_logo.svg" },
+    { name: "Google Ads", logo: "https://cdn.simpleicons.org/googleads/4285F4" },
+    { name: "Meta Ads", logo: "https://cdn.simpleicons.org/meta/0082FB" },
+    { name: "YouTube", logo: "https://cdn.simpleicons.org/youtube/FF0000" },
+    { name: "DV360", logo: "https://cdn.simpleicons.org/google/4285F4" },
+    { name: "Google Analytics", logo: "https://cdn.simpleicons.org/googleanalytics/E37400" },
+    { name: "ChatGPT", logo: "https://cdn.simpleicons.org/openai/ffffff" },
+    { name: "Canva", logo: "https://cdn.simpleicons.org/canva/00C4CC" },
+    { name: "Comscore", logo: "https://cdn.simpleicons.org/c/555555" },
+    { name: "GWI", logo: "https://cdn.simpleicons.org/g/FF6B35" },
   ];
   const all = [...tools, ...tools];
 
@@ -715,62 +715,75 @@ function ToolsMarquee() {
   );
 }
 
-/* ─── COMPARISON (CHANGE 4: clean checklist, no Us/Others) ───── */
+/* ─── COMPARISON — Split Card, pure text, no symbols ─────────── */
 function Comparison() {
-  const points = [
-    { icon: "🎯", text: "Practical, hands-on live training — not theory-based modules" },
-    { icon: "🖥️", text: "Live platform access with new-age AI tools included" },
-    { icon: "🏆", text: "Trainer with 12+ years of real global agency experience" },
-    { icon: "📋", text: "Industry-aligned curriculum, always updated" },
-    { icon: "📊", text: "Real campaign breakdowns from actual client budgets" },
-    { icon: "💼", text: "Structured job prep, interview training & placement support" },
+  const rows = [
+    ["Practical, hands-on live training", "Mostly theory-based"],
+    ["Live platform with new-age AI tools", "Recorded / outdated modules"],
+    ["12+ years real agency experience", "Limited agency exposure"],
+    ["Industry-aligned, always updated", "Generic syllabus"],
+    ["Real campaign breakdowns", "Limited real exposure"],
+    ["Structured job prep & interview training", "Empty placement promises"],
   ];
 
   return (
     <section id="results" style={{ padding: "clamp(4rem, 8vw, 8rem) 5vw", background: "var(--surface)" }}>
       <style>{`
-        .checklist-item {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
+        .split-table {
+          width: 100%;
+          border-collapse: separate;
+          border-spacing: 0;
+          border-radius: 16px;
+          overflow: hidden;
+          border: 1px solid var(--border);
+        }
+        .split-table thead tr th {
           padding: 1rem 1.4rem;
-          border-bottom: 1px solid rgba(255,255,255,0.05);
-          transition: background 0.2s, transform 0.2s;
-          border-radius: 8px;
+          font-size: 0.72rem;
+          font-weight: 800;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
         }
-        .checklist-item:last-child { border-bottom: none; }
-        .checklist-item:hover {
-          background: rgba(255,193,7,0.05);
-          transform: translateX(6px);
-        }
-        .check-icon {
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          background: rgba(255,92,26,0.15);
-          border: 1.5px solid rgba(255,92,26,0.4);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-          font-size: 0.75rem;
-          font-weight: 900;
+        .split-table thead tr th:first-child {
+          background: rgba(255,92,26,0.12);
           color: var(--orange);
+          border-right: 1px solid var(--border);
+          width: 50%;
         }
-        .checklist-emoji {
-          font-size: 1.1rem;
-          flex-shrink: 0;
-          width: 24px;
-          text-align: center;
+        .split-table thead tr th:last-child {
+          background: rgba(255,255,255,0.03);
+          color: rgba(240,237,232,0.35);
+          width: 50%;
         }
-        @media (max-width: 600px) {
-          .checklist-item {
-            padding: 0.9rem 1rem;
-            gap: 0.8rem;
+        .split-row td {
+          padding: 0.95rem 1.4rem;
+          font-size: 0.9rem;
+          font-weight: 500;
+          line-height: 1.5;
+          border-top: 1px solid rgba(255,255,255,0.05);
+          vertical-align: middle;
+        }
+        .split-row td:first-child {
+          color: var(--white);
+          background: rgba(255,92,26,0.04);
+          border-right: 1px solid var(--border);
+        }
+        .split-row td:last-child {
+          color: rgba(240,237,232,0.3);
+          background: transparent;
+        }
+        .split-row:hover td:first-child {
+          background: rgba(255,92,26,0.09);
+        }
+        @media (max-width: 540px) {
+          .split-table thead tr th,
+          .split-row td {
+            padding: 0.8rem 0.9rem;
+            font-size: 0.82rem;
           }
         }
       `}</style>
-      <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "860px", margin: "0 auto" }}>
         <div className="reveal" style={{ marginBottom: "3.5rem" }}>
           <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)", display: "block", marginBottom: "1rem" }}>Why Choose Us</span>
           <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 4rem)", lineHeight: 0.95 }}>
@@ -778,14 +791,23 @@ function Comparison() {
           </h2>
         </div>
 
-        <div className="reveal" style={{ background: "var(--bg)", border: "1px solid var(--border)", borderRadius: "16px", overflow: "hidden" }}>
-          {points.map((p, i) => (
-            <div key={i} className="checklist-item">
-              <div className="checklist-emoji">{p.icon}</div>
-              <div className="check-icon">✓</div>
-              <span style={{ fontSize: "0.97rem", color: "var(--white)", fontWeight: 500, lineHeight: 1.5 }}>{p.text}</span>
-            </div>
-          ))}
+        <div className="reveal" style={{ background: "var(--bg)", borderRadius: "16px", overflow: "hidden" }}>
+          <table className="split-table">
+            <thead>
+              <tr>
+                <th>DigitalWithChirag</th>
+                <th>Others</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map(([us, them], i) => (
+                <tr key={i} className="split-row">
+                  <td>{us}</td>
+                  <td>{them}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -1010,28 +1032,59 @@ function CTA() {
 /* ─── FOOTER ─────────────────────────────────────────────────── */
 function Footer() {
   return (
-    <footer style={{ background: "#030305", borderTop: "1px solid var(--border)", padding: "2.5rem 5vw", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
-      <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "1rem", color: "var(--muted)" }}>
-        Digital<span style={{ color: "var(--orange)" }}>With</span>Chirag
-      </span>
-      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-        <a href="https://www.instagram.com/digitalwithchirag_" target="_blank" rel="noreferrer" style={{ color: "rgba(240,237,232,0.35)", transition: "color 0.2s" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#E1306C")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,237,232,0.35)")}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
-        </a>
-        <a href="https://www.facebook.com/share/18MMTKLM7r/?mibextid=wwXIfr" target="_blank" rel="noreferrer" style={{ color: "rgba(240,237,232,0.35)", transition: "color 0.2s" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#1877F2")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,237,232,0.35)")}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
-        </a>
-        <a href="https://wa.me/9311048234" target="_blank" rel="noreferrer" style={{ color: "rgba(240,237,232,0.35)", transition: "color 0.2s" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#25D366")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,237,232,0.35)")}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-        </a>
+    <footer style={{ background: "#030305", borderTop: "1px solid var(--border)", padding: "2.5rem 5vw 5rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "1.5rem" }}>
+      <style>{`
+        .footer-inner {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+        .footer-socials {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          justify-content: center;
+        }
+        .footer-copy {
+          font-size: 0.82rem;
+          color: rgba(240,237,232,0.25);
+          text-align: center;
+          width: 100%;
+        }
+        @media (max-width: 600px) {
+          .footer-inner {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+        }
+      `}</style>
+      <div className="footer-inner">
+        <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "1rem", color: "var(--muted)" }}>
+          Digital<span style={{ color: "var(--orange)" }}>With</span>Chirag
+        </span>
+        <div className="footer-socials">
+          <a href="https://www.instagram.com/digitalwithchirag_" target="_blank" rel="noreferrer" style={{ color: "rgba(240,237,232,0.35)", transition: "color 0.2s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#E1306C")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,237,232,0.35)")}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
+          </a>
+          <a href="https://www.facebook.com/share/18MMTKLM7r/?mibextid=wwXIfr" target="_blank" rel="noreferrer" style={{ color: "rgba(240,237,232,0.35)", transition: "color 0.2s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#1877F2")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,237,232,0.35)")}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
+          </a>
+          <a href="https://wa.me/9311048234" target="_blank" rel="noreferrer" style={{ color: "rgba(240,237,232,0.35)", transition: "color 0.2s" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#25D366")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(240,237,232,0.35)")}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
+          </a>
+        </div>
+        <span className="footer-copy">© 2025 DigitalWithChirag. All rights reserved.</span>
       </div>
-      <span style={{ fontSize: "0.82rem", color: "rgba(240,237,232,0.25)" }}>© 2025 DigitalWithChirag. All rights reserved.</span>
     </footer>
   );
 }
