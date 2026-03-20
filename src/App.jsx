@@ -313,17 +313,18 @@ function Hero() {
         }
         /* Photo side */
         .mentor-photo-top {
-          width: 140px;
+          width: 160px;
           flex-shrink: 0;
           position: relative;
           overflow: hidden;
           border-radius: 0;
+          min-height: 220px;
         }
         .mentor-photo-top img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center top;
+          object-position: center 15%;
           display: block;
         }
         .mentor-photo-top::after {
@@ -457,7 +458,10 @@ function Hero() {
           }
           .mentor-photo-top {
             width: 100%;
-            height: 200px;
+            height: 280px;
+          }
+          .mentor-photo-top img {
+            object-position: center 20%;
           }
           .mentor-photo-top::after {
             background: linear-gradient(to bottom, transparent 50%, rgba(10,10,16,0.7));
