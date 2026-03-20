@@ -711,14 +711,15 @@ function Curriculum() {
   );
 }
 
-/* ─── TOOLS MARQUEE — accurate inline SVGs ───────────────────── */
+/* ─── TOOLS MARQUEE — world class, colorful glowing cards ────── */
 function ToolsMarquee() {
   const tools = [
     {
       name: "Google Ads",
+      color: "#FBBC04",
       svg: (
-        <svg viewBox="0 0 48 48" width="40" height="40">
-          <path d="M10 34.4L19.6 18a4 4 0 016.9 0l1.5 2.6-5.7 9.9a8 8 0 000 8 8 8 0 002.2 2.5H13.3a4 4 0 01-3.3-4.1v-.5z" fill="#FBBC04"/>
+        <svg viewBox="0 0 48 48" width="36" height="36">
+          <path d="M10 34.4L19.6 18a4 4 0 016.9 0l1.5 2.6-5.7 9.9a8 8 0 000 8 8 8 0 002.2 2.5H13.3a4 4 0 01-3.3-4.6z" fill="#FBBC04"/>
           <path d="M36.7 34.4a4 4 0 01-6.9 0L18.5 15.2a4 4 0 016.9 0L36.7 34.4z" fill="#4285F4"/>
           <circle cx="38" cy="36" r="5" fill="#34A853"/>
         </svg>
@@ -726,11 +727,12 @@ function ToolsMarquee() {
     },
     {
       name: "Meta Ads",
+      color: "#0082FB",
       svg: (
-        <svg viewBox="0 0 48 48" width="40" height="40">
-          <path d="M6 26c0 3 .7 5.3 1.7 6.8C9 34.5 10.5 35 12 35c2 0 3.8-.8 5.8-3.5 1.5-2 3.2-5 4.3-7l2-3.3c1.4-2.3 3-4.7 4.9-6.2 1.5-1.3 3.2-2 5-2 3 0 5.5 1.5 7.3 4.3 1.8 2.8 2.7 6.3 2.7 10.3 0 2.8-.6 5-1.5 6.6-1 1.7-2.6 2.7-4.8 2.7V33c1.8 0 2.7-1.7 2.7-5.5 0-3-.6-5.5-1.7-7.2-1-1.6-2.3-2.5-4-2.5-1.5 0-2.8.7-4.2 2-.8.8-1.7 2.1-2.8 4L26 27.4c-2.6 4.7-4.8 7-8.7 7-2.5 0-4.5-1-5.9-2.8C10 30 9.3 28 9.3 26H6z" fill="url(#mg)"/>
+        <svg viewBox="0 0 48 48" width="36" height="36">
+          <path d="M6 26c0 3 .7 5.3 1.7 6.8C9 34.5 10.5 35 12 35c2 0 3.8-.8 5.8-3.5 1.5-2 3.2-5 4.3-7l2-3.3c1.4-2.3 3-4.7 4.9-6.2 1.5-1.3 3.2-2 5-2 3 0 5.5 1.5 7.3 4.3 1.8 2.8 2.7 6.3 2.7 10.3 0 2.8-.6 5-1.5 6.6-1 1.7-2.6 2.7-4.8 2.7V33c1.8 0 2.7-1.7 2.7-5.5 0-3-.6-5.5-1.7-7.2-1-1.6-2.3-2.5-4-2.5-1.5 0-2.8.7-4.2 2-.8.8-1.7 2.1-2.8 4L26 27.4c-2.6 4.7-4.8 7-8.7 7-2.5 0-4.5-1-5.9-2.8C10 30 9.3 28 9.3 26H6z" fill="url(#mg2)"/>
           <defs>
-            <linearGradient id="mg" x1="6" y1="13" x2="42" y2="35" gradientUnits="userSpaceOnUse">
+            <linearGradient id="mg2" x1="6" y1="13" x2="42" y2="35" gradientUnits="userSpaceOnUse">
               <stop stopColor="#0082FB"/>
               <stop offset="1" stopColor="#0045B5"/>
             </linearGradient>
@@ -740,8 +742,9 @@ function ToolsMarquee() {
     },
     {
       name: "YouTube",
+      color: "#FF0000",
       svg: (
-        <svg viewBox="0 0 48 48" width="40" height="40">
+        <svg viewBox="0 0 48 48" width="36" height="36">
           <path d="M44.5 14.5s-.5-3.3-2-4.8c-1.9-2-4-2-5-2.1C31.5 7 24 7 24 7s-7.5 0-13.5.6c-1 .1-3.1.1-5 2.1-1.5 1.5-2 4.8-2 4.8S3 18.3 3 22.1v3.6c0 3.8.5 7.6.5 7.6s.5 3.3 2 4.8c1.9 2 4.4 1.9 5.5 2.1C14.5 40.5 24 40.5 24 40.5s7.5 0 13.5-.6c1-.1 3.1-.1 5-2.1 1.5-1.5 2-4.8 2-4.8s.5-3.8.5-7.6v-3.6c0-3.8-.5-7.6-.5-7.6z" fill="#FF0000"/>
           <path d="M20 30.5v-13l12 6.5-12 6.5z" fill="white"/>
         </svg>
@@ -749,57 +752,63 @@ function ToolsMarquee() {
     },
     {
       name: "DV360",
+      color: "#1A73E8",
       svg: (
-        <svg viewBox="0 0 48 48" width="40" height="40">
-          <rect width="48" height="48" rx="8" fill="#1A73E8"/>
+        <svg viewBox="0 0 48 48" width="36" height="36">
+          <rect width="48" height="48" rx="10" fill="#1A73E8"/>
           <path d="M13 14h9c5.5 0 9 3.5 9 10s-3.5 10-9 10H13V14zm5 4v12h4c2.8 0 4.5-2 4.5-6s-1.7-6-4.5-6h-4z" fill="white"/>
-          <text x="34" y="36" fontSize="7" fill="white" fontWeight="800" fontFamily="Arial" textAnchor="middle">360</text>
+          <text x="38" y="38" fontSize="8" fill="white" fontWeight="800" fontFamily="Arial" textAnchor="middle">360</text>
         </svg>
       ),
     },
     {
       name: "Google Analytics",
+      color: "#F9AB00",
       svg: (
-        <svg viewBox="0 0 48 48" width="40" height="40">
-          <rect x="6" y="26" width="8" height="16" rx="2" fill="#F9AB00"/>
-          <rect x="20" y="16" width="8" height="26" rx="2" fill="#E37400"/>
-          <rect x="34" y="6" width="8" height="36" rx="2" fill="#E37400"/>
+        <svg viewBox="0 0 48 48" width="36" height="36">
+          <rect x="6" y="26" width="9" height="16" rx="2" fill="#F9AB00"/>
+          <rect x="20" y="16" width="9" height="26" rx="2" fill="#E37400"/>
+          <rect x="34" y="6" width="9" height="36" rx="2" fill="#E37400"/>
         </svg>
       ),
     },
     {
       name: "ChatGPT",
+      color: "#10A37F",
       svg: (
-        <svg viewBox="0 0 48 48" width="40" height="40">
+        <svg viewBox="0 0 48 48" width="36" height="36">
           <circle cx="24" cy="24" r="22" fill="#10A37F"/>
-          <path d="M33.5 20.5a9.5 9.5 0 00-17.2-5.6A8 8 0 0010 22a8 8 0 004 6.9v2.4A8 8 0 0022 38a9.5 9.5 0 0017.2-5.6A8 8 0 0044 26a8 8 0 00-4-6.9v-1.1a8 8 0 00-6.5-7.4zM24 34a6 6 0 110-12 6 6 0 010 12z" fill="white"/>
+          <path d="M32 18.5a8 8 0 00-14.5-4.6A6.5 6.5 0 0011 20a6.5 6.5 0 003.3 5.6v2A6.5 6.5 0 0020.5 34a8 8 0 0014.5-4.6A6.5 6.5 0 0038 24a6.5 6.5 0 00-3.3-5.6v-1A6.5 6.5 0 0032 18.5zM24 30a6 6 0 110-12 6 6 0 010 12z" fill="white"/>
         </svg>
       ),
     },
     {
       name: "Canva",
+      color: "#00C4CC",
       svg: (
-        <svg viewBox="0 0 48 48" width="40" height="40">
+        <svg viewBox="0 0 48 48" width="36" height="36">
           <circle cx="24" cy="24" r="22" fill="#00C4CC"/>
-          <path d="M30 16c-1.5 0-2.7.9-3.4 2.2C25.9 16.9 24.7 16 23.2 16c-2.4 0-4.2 2.2-4.2 5 0 4.6 7 9.5 8 10 1-.5 8-5.4 8-10 0-2.8-1.8-5-5-5z" fill="white"/>
+          <path d="M31 17c-1.8 0-3.2 1-3.8 2.5C26.6 18 25.2 17 23.4 17c-2.8 0-4.8 2.5-4.8 5.8 0 5.2 8 10.7 9.1 11.2 1.1-.5 9.1-6 9.1-11.2C36.8 19.5 34.8 17 31 17z" fill="white"/>
         </svg>
       ),
     },
     {
       name: "Comscore",
+      color: "#003087",
       svg: (
-        <svg viewBox="0 0 48 48" width="40" height="40">
-          <rect width="48" height="48" rx="8" fill="#003087"/>
-          <path d="M24 10a14 14 0 100 28A14 14 0 0024 10zm0 4a10 10 0 017 2.8l-2.8 2.8A6 6 0 0024 18a6 6 0 00-6 6 6 6 0 006 6 6 6 0 004.2-1.6l2.8 2.8A10 10 0 0124 34a10 10 0 01-10-10 10 10 0 0110-10z" fill="white"/>
+        <svg viewBox="0 0 48 48" width="36" height="36">
+          <rect width="48" height="48" rx="10" fill="#003087"/>
+          <path d="M24 10a14 14 0 100 28A14 14 0 0024 10zm0 4a10 10 0 016.8 2.6L28 19.4A6 6 0 0024 18a6 6 0 00-6 6 6 6 0 006 6 6 6 0 004-1.5l2.8 2.8A10 10 0 0124 34a10 10 0 01-10-10 10 10 0 0110-10z" fill="white"/>
         </svg>
       ),
     },
     {
       name: "GWI",
+      color: "#FF6B35",
       svg: (
-        <svg viewBox="0 0 48 48" width="40" height="40">
-          <rect width="48" height="48" rx="8" fill="#FF6B35"/>
-          <text x="24" y="30" textAnchor="middle" fontSize="14" fill="white" fontWeight="800" fontFamily="Arial, sans-serif">GWI</text>
+        <svg viewBox="0 0 48 48" width="36" height="36">
+          <rect width="48" height="48" rx="10" fill="#FF6B35"/>
+          <text x="24" y="31" textAnchor="middle" fontSize="15" fill="white" fontWeight="900" fontFamily="Arial, sans-serif">GWI</text>
         </svg>
       ),
     },
@@ -807,61 +816,83 @@ function ToolsMarquee() {
   const all = [...tools, ...tools];
 
   return (
-    <section style={{ padding: "3rem 0 2.5rem", background: "var(--bg)", overflow: "hidden" }}>
+    <section style={{ padding: "3.5rem 0", background: "var(--bg)", overflow: "hidden" }}>
       <style>{`
         .tools-track {
           display: flex;
           align-items: center;
-          animation: marquee 30s linear infinite;
+          animation: marquee 32s linear infinite;
           width: max-content;
         }
         .tools-track:hover { animation-play-state: paused; }
-        .tool-item {
+        .tool-card {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 0.5rem;
-          padding: 0 2rem;
+          gap: 0.6rem;
+          margin: 0 0.7rem;
           cursor: default;
-          transition: transform 0.2s;
         }
-        .tool-item:hover { transform: translateY(-3px); }
-        .tool-item svg {
-          filter: grayscale(100%) opacity(0.5);
-          transition: filter 0.3s;
+        .tool-icon-wrap {
+          width: 68px;
+          height: 68px;
+          border-radius: 18px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+          border: 1px solid rgba(255,255,255,0.07);
         }
-        .tool-item:hover svg {
-          filter: grayscale(0%) opacity(1);
+        .tool-card:hover .tool-icon-wrap {
+          transform: translateY(-5px) scale(1.06);
         }
-        .tool-item span {
-          font-size: 0.63rem;
-          font-weight: 600;
-          color: rgba(240,237,232,0.3);
-          letter-spacing: 0.06em;
+        .tool-card-name {
+          font-size: 0.62rem;
+          font-weight: 700;
+          color: rgba(240,237,232,0.45);
+          letter-spacing: 0.05em;
           text-transform: uppercase;
           transition: color 0.3s;
           white-space: nowrap;
         }
-        .tool-item:hover span { color: rgba(240,237,232,0.7); }
+        .tool-card:hover .tool-card-name {
+          color: rgba(240,237,232,0.9);
+        }
         @media (max-width: 600px) {
-          .tool-item { padding: 0 1.4rem; }
-          .tool-item svg { width: 32px !important; height: 32px !important; }
-          .tool-item span { font-size: 0.55rem; }
+          .tool-icon-wrap { width: 52px; height: 52px; border-radius: 14px; }
+          .tool-icon-wrap svg { width: 28px !important; height: 28px !important; }
+          .tool-card-name { font-size: 0.55rem; }
+          .tool-card { margin: 0 0.5rem; gap: 0.4rem; }
         }
       `}</style>
 
-      <div style={{ textAlign: "center", marginBottom: "2rem", padding: "0 5vw" }}>
+      <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
         <span style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)" }}>
           Platforms & Tools You Will Master
         </span>
       </div>
 
-      <div style={{ overflow: "hidden", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)", padding: "1.5rem 0" }}>
+      <div style={{ overflow: "hidden" }}>
         <div className="tools-track">
           {all.map((tool, i) => (
-            <div key={i} className="tool-item">
-              {tool.svg}
-              <span>{tool.name}</span>
+            <div key={i} className="tool-card">
+              <div
+                className="tool-icon-wrap"
+                style={{
+                  background: `rgba(${tool.color.replace('#','').match(/.{2}/g).map(h=>parseInt(h,16)).join(',')}, 0.12)`,
+                  boxShadow: `0 4px 20px rgba(${tool.color.replace('#','').match(/.{2}/g).map(h=>parseInt(h,16)).join(',')}, 0.15)`,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = `0 8px 32px rgba(${tool.color.replace('#','').match(/.{2}/g).map(h=>parseInt(h,16)).join(',')}, 0.4)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = `0 4px 20px rgba(${tool.color.replace('#','').match(/.{2}/g).map(h=>parseInt(h,16)).join(',')}, 0.15)`;
+                }}
+              >
+                {tool.svg}
+              </div>
+              <span className="tool-card-name">{tool.name}</span>
             </div>
           ))}
         </div>
