@@ -711,98 +711,18 @@ function Curriculum() {
   );
 }
 
-/* ─── TOOLS MARQUEE — all inline SVGs, zero external deps ───── */
+/* ─── TOOLS MARQUEE — real logo files, uniform size ─────────── */
 function ToolsMarquee() {
   const tools = [
-    {
-      name: "Google Ads",
-      svg: (
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
-          <path d="M2.2 18.4L8.8 7.2a2.4 2.4 0 014.1 0l.9 1.6-3.4 5.9a4.8 4.8 0 000 4.8 4.8 4.8 0 001.3 1.5H4.6a2.4 2.4 0 01-2.4-2.6z" fill="#FBBC04"/>
-          <path d="M21.8 18.4a2.4 2.4 0 01-4.1 0l-6.6-11.2a2.4 2.4 0 014.1 0L21.8 18.4z" fill="#4285F4"/>
-          <circle cx="19.4" cy="19" r="2.4" fill="#34A853"/>
-        </svg>
-      ),
-    },
-    {
-      name: "Meta Ads",
-      svg: (
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
-          <path d="M2.4 14.4c0 1.8.4 3.2 1 4.1.6.9 1.5 1.3 2.6 1.3 1.2 0 2.3-.5 3.5-2.1.9-1.2 1.9-3 2.6-4.2l1.2-2c.8-1.4 1.8-2.8 2.9-3.7.9-.8 1.9-1.2 3-1.2 1.8 0 3.3.9 4.4 2.6 1.1 1.7 1.6 3.8 1.6 6.2 0 1.7-.3 3-.9 4-.6 1-1.6 1.6-2.9 1.6v-2.4c1.1 0 1.6-1 1.6-3.3 0-1.8-.3-3.3-1-4.3-.6-1-1.4-1.5-2.4-1.5-.9 0-1.7.4-2.5 1.2-.8.8-1.7 2.1-2.6 3.7l-1.2 2.1c-1.6 2.8-2.9 4.2-5.2 4.2-1.5 0-2.7-.6-3.6-1.7C2.9 18 2.4 16.4 2.4 14.4z" fill="url(#metaGrad)"/>
-          <defs>
-            <linearGradient id="metaGrad" x1="2" y1="6" x2="22" y2="20" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#0082FB"/>
-              <stop offset="1" stopColor="#0045B5"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      ),
-    },
-    {
-      name: "YouTube",
-      svg: (
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
-          <rect x="2" y="5" width="20" height="14" rx="4" fill="#FF0000"/>
-          <path d="M10 9l6 3-6 3V9z" fill="white"/>
-        </svg>
-      ),
-    },
-    {
-      name: "DV360",
-      svg: (
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
-          <circle cx="12" cy="12" r="10" fill="#1A73E8"/>
-          <path d="M8 8h4.5C14.4 8 16 9.6 16 12s-1.6 4-3.5 4H8V8zm2 2v4h2.5c.8 0 1.5-.9 1.5-2s-.7-2-1.5-2H10z" fill="white"/>
-          <text x="12" y="21" textAnchor="middle" fontSize="4" fill="white" fontWeight="bold">360</text>
-        </svg>
-      ),
-    },
-    {
-      name: "Google Analytics",
-      svg: (
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
-          <rect x="3" y="13" width="4" height="8" rx="1" fill="#F9AB00"/>
-          <rect x="10" y="8" width="4" height="13" rx="1" fill="#E37400"/>
-          <rect x="17" y="3" width="4" height="18" rx="1" fill="#E37400"/>
-        </svg>
-      ),
-    },
-    {
-      name: "ChatGPT",
-      svg: (
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
-          <circle cx="12" cy="12" r="10" fill="#10A37F"/>
-          <path d="M15.5 9.5a3.5 3.5 0 00-6.3-2.1A3 3 0 005 10a3 3 0 001.5 2.6v.9A3 3 0 009 16.4a3.5 3.5 0 006.3-2.1 3 3 0 001.7-2.7 3 3 0 00-1.5-2.1zM12 15a3 3 0 110-6 3 3 0 010 6z" fill="white"/>
-        </svg>
-      ),
-    },
-    {
-      name: "Canva",
-      svg: (
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
-          <circle cx="12" cy="12" r="10" fill="#00C4CC"/>
-          <path d="M14.5 8.5c-.8 0-1.4.5-1.8 1.2-.4-.7-1-1.2-1.8-1.2-1.2 0-2.1 1.1-2.1 2.5 0 2.3 3.9 5 3.9 5s3.9-2.7 3.9-5c0-1.4-.9-2.5-2.1-2.5z" fill="white"/>
-        </svg>
-      ),
-    },
-    {
-      name: "Comscore",
-      svg: (
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
-          <circle cx="12" cy="12" r="10" fill="#003087"/>
-          <path d="M7 12a5 5 0 015-5 5 5 0 013.5 1.4l-1.4 1.4A3 3 0 0012 9a3 3 0 00-3 3 3 3 0 003 3 3 3 0 002.1-.9l1.4 1.4A5 5 0 0112 17a5 5 0 01-5-5z" fill="white"/>
-        </svg>
-      ),
-    },
-    {
-      name: "GWI",
-      svg: (
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
-          <circle cx="12" cy="12" r="10" fill="#FF6B35"/>
-          <text x="12" y="16" textAnchor="middle" fontSize="6.5" fill="white" fontWeight="800" fontFamily="Arial, sans-serif">GWI</text>
-        </svg>
-      ),
-    },
+    { name: "Google Ads",       logo: "/google-ads.svg" },
+    { name: "Meta Ads",         logo: "/meta-ads.svg" },
+    { name: "YouTube",          logo: "/youtube.svg" },
+    { name: "DV360",            logo: "/dv360.svg" },
+    { name: "Google Analytics", logo: "/google-analytics.svg" },
+    { name: "ChatGPT",          logo: "/chatgpt-logo.svg" },
+    { name: "Canva",            logo: "/canva.svg" },
+    { name: "Comscore",         logo: "/comscore.svg" },
+    { name: "GWI",              logo: "/gwi.svg" },
   ];
   const all = [...tools, ...tools];
 
@@ -869,7 +789,11 @@ function ToolsMarquee() {
           {all.map((tool, i) => (
             <div key={i} className="tool-pill">
               <div className="tool-logo-wrap">
-                {tool.svg}
+                <img
+                  src={tool.logo}
+                  alt={tool.name}
+                  className="tool-logo"
+                />
               </div>
               <span className="tool-name">{tool.name}</span>
             </div>
