@@ -711,7 +711,7 @@ function Curriculum() {
   );
 }
 
-/* ─── TOOLS MARQUEE — real logo files, uniform size ─────────── */
+/* ─── TOOLS MARQUEE — clean logo scroll, industry standard ───── */
 function ToolsMarquee() {
   const tools = [
     { name: "Google Ads",       logo: "/google-ads.png" },
@@ -727,83 +727,68 @@ function ToolsMarquee() {
   const all = [...tools, ...tools];
 
   return (
-    <section style={{ padding: "2.5rem 0", background: "var(--bg)", overflow: "hidden" }}>
+    <section style={{ padding: "3rem 0 2.5rem", background: "var(--bg)", overflow: "hidden" }}>
       <style>{`
         .tools-track {
           display: flex;
           align-items: center;
-          animation: marquee 28s linear infinite;
+          animation: marquee 30s linear infinite;
           width: max-content;
         }
         .tools-track:hover { animation-play-state: paused; }
-        .tool-pill {
+        .tool-item {
           display: flex;
+          flex-direction: column;
           align-items: center;
-          gap: 0.6rem;
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 12px;
-          padding: 0.6rem 1rem;
-          margin: 0 0.5rem;
-          white-space: nowrap;
-          transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+          gap: 0.5rem;
+          padding: 0 2.5rem;
           cursor: default;
+          transition: transform 0.2s;
         }
-        .tool-pill:hover {
-          border-color: rgba(255,193,7,0.4);
-          box-shadow: 0 0 16px rgba(255,193,7,0.1);
-          transform: translateY(-2px);
-        }
-        .tool-logo-wrap {
-          width: 28px;
-          height: 28px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-          background: white;
-          border-radius: 6px;
-          padding: 3px;
-        }
-        .tool-logo {
-          width: 22px;
-          height: 22px;
+        .tool-item:hover { transform: translateY(-3px); }
+        .tool-item img {
+          height: 40px;
+          width: auto;
+          max-width: 80px;
           object-fit: contain;
+          filter: grayscale(100%) opacity(0.5);
+          transition: filter 0.3s, transform 0.3s;
           display: block;
         }
-        .tool-name {
-          font-size: 0.82rem;
+        .tool-item:hover img {
+          filter: grayscale(0%) opacity(1);
+        }
+        .tool-item span {
+          font-size: 0.65rem;
           font-weight: 600;
-          color: rgba(240,237,232,0.85);
-          letter-spacing: 0.02em;
+          color: rgba(240,237,232,0.3);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          transition: color 0.3s;
+          white-space: nowrap;
+        }
+        .tool-item:hover span {
+          color: rgba(240,237,232,0.7);
         }
         @media (max-width: 600px) {
-          .tool-pill {
-            padding: 0.5rem 0.8rem;
-            gap: 0.5rem;
-            border-radius: 10px;
-            margin: 0 0.4rem;
-          }
-          .tool-logo-wrap { width: 24px; height: 24px; padding: 2px; }
-          .tool-logo { width: 18px; height: 18px; }
-          .tool-name { font-size: 0.75rem; }
+          .tool-item { padding: 0 1.8rem; }
+          .tool-item img { height: 32px; max-width: 64px; }
+          .tool-item span { font-size: 0.58rem; }
         }
       `}</style>
 
-      <div style={{ textAlign: "center", marginBottom: "1.2rem", padding: "0 5vw" }}>
+      <div style={{ textAlign: "center", marginBottom: "2rem", padding: "0 5vw" }}>
         <span style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)" }}>
           Platforms & Tools You Will Master
         </span>
       </div>
 
-      <div style={{ overflow: "hidden", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "0.8rem 0", background: "var(--surface)" }}>
+      <div style={{ overflow: "hidden", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)", padding: "1.5rem 0", background: "var(--bg)" }}>
         <div className="tools-track">
           {all.map((tool, i) => (
-            <div key={i} className="tool-pill">
-              <div className="tool-logo-wrap">
-                <img src={tool.logo} alt={tool.name} className="tool-logo" />
-              </div>
-              <span className="tool-name">{tool.name}</span>
+            <div key={i} className="tool-item">
+              <img src={tool.logo} alt={tool.name} />
+              <span>{tool.name}</span>
             </div>
           ))}
         </div>
