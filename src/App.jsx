@@ -324,7 +324,7 @@ function Hero() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center 15%;
+          object-position: center 5%;
           display: block;
         }
         .mentor-photo-top::after {
@@ -461,7 +461,7 @@ function Hero() {
             height: 280px;
           }
           .mentor-photo-top img {
-            object-position: center 20%;
+            object-position: center 5%;
           }
           .mentor-photo-top::after {
             background: linear-gradient(to bottom, transparent 50%, rgba(10,10,16,0.7));
