@@ -162,7 +162,7 @@ function Hero() {
   return (
     <section style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 5vw", paddingTop: "70px", position: "relative", overflow: "hidden" }}>
       <style>{`
-        /* ── Mentor card redesign ── */
+        /* ── Mentor card — vertical redesign ── */
         @keyframes borderGlow {
           0%, 100% { opacity: 0.5; }
           50% { opacity: 1; }
@@ -185,51 +185,43 @@ function Hero() {
         }
         .mentor-card {
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           align-items: center;
-          gap: 1.6rem;
-          background: rgba(10, 10, 16, 0.92);
-          backdrop-filter: blur(24px);
+          background: rgba(10, 10, 16, 0.95);
           border: 1px solid rgba(255,193,7,0.2);
           border-radius: 24px;
-          padding: 1.6rem;
-          position: relative;
           overflow: hidden;
           animation: mentorSlideIn 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s both;
           transition: box-shadow 0.3s, border-color 0.3s;
+          max-width: 340px;
         }
         .mentor-card:hover {
           box-shadow: 0 24px 64px rgba(255,193,7,0.12);
           border-color: rgba(255,193,7,0.4);
         }
-        .mentor-card::before {
+        /* Top photo area */
+        .mentor-photo-top {
+          width: 100%;
+          background: linear-gradient(135deg, rgba(255,92,26,0.35) 0%, rgba(255,193,7,0.2) 100%);
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          padding: 1.8rem 1.5rem 0;
+          position: relative;
+          overflow: hidden;
+        }
+        .mentor-photo-top::before {
           content: '';
           position: absolute;
           inset: 0;
-          border-radius: 24px;
-          padding: 1px;
-          background: linear-gradient(135deg, rgba(255,193,7,0.5), transparent 50%, rgba(255,92,26,0.3));
-          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          animation: borderGlow 3s ease-in-out infinite;
+          background: linear-gradient(135deg, rgba(255,92,26,0.15), rgba(255,193,7,0.08));
           pointer-events: none;
         }
-        .mentor-card::after {
-          content: '';
-          position: absolute;
-          top: -40%; left: -20%;
-          width: 55%; height: 200%;
-          background: linear-gradient(90deg, transparent, rgba(255,193,7,0.03), transparent);
-          transform: skewX(-15deg);
-          animation: shimmerMove 5s ease-in-out infinite;
-          pointer-events: none;
-        }
-
-        /* Avatar */
+        /* Avatar ring */
         .avatar-ring {
           position: relative;
           flex-shrink: 0;
+          z-index: 1;
         }
         .avatar-ring::before {
           content: '';
@@ -241,8 +233,8 @@ function Hero() {
           z-index: 0;
         }
         .avatar-img {
-          width: 100px;
-          height: 100px;
+          width: 110px;
+          height: 110px;
           border-radius: 50%;
           object-fit: cover;
           object-position: center top;
@@ -261,25 +253,27 @@ function Hero() {
           z-index: 2;
           animation: pulse-dot 2s ease-in-out infinite;
         }
-
-        /* Info */
+        /* Info below photo */
         .mentor-info {
+          width: 100%;
           display: flex;
           flex-direction: column;
-          gap: 0.6rem;
-          flex: 1;
-          min-width: 0;
+          align-items: center;
+          gap: 0.7rem;
+          padding: 1.4rem 1.4rem 1.6rem;
+          text-align: center;
         }
         .mentor-name-row {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 0.5rem;
           flex-wrap: wrap;
         }
         .mentor-name {
           font-family: var(--font-display);
           font-weight: 800;
-          font-size: 1.15rem;
+          font-size: 1.2rem;
           color: var(--white);
           letter-spacing: -0.01em;
         }
@@ -296,13 +290,14 @@ function Hero() {
         }
         .mentor-role {
           font-size: 0.75rem;
-          color: rgba(240,237,232,0.45);
+          color: rgba(240,237,232,0.4);
           font-weight: 500;
           letter-spacing: 0.04em;
-          margin-top: -0.2rem;
+          margin-top: -0.3rem;
         }
         .mentor-divider {
           height: 1px;
+          width: 100%;
           background: rgba(255,255,255,0.06);
         }
         .agency-row {
@@ -310,6 +305,7 @@ function Hero() {
           flex-wrap: wrap;
           gap: 0.3rem;
           align-items: center;
+          justify-content: center;
         }
         .agency-label {
           font-size: 0.62rem;
@@ -317,7 +313,9 @@ function Hero() {
           font-weight: 600;
           letter-spacing: 0.06em;
           text-transform: uppercase;
-          white-space: nowrap;
+          width: 100%;
+          text-align: center;
+          margin-bottom: 0.1rem;
         }
         .agency-badge {
           font-size: 0.65rem;
@@ -349,7 +347,6 @@ function Hero() {
           border-radius: 10px;
           padding: 0.35rem 0.9rem;
           letter-spacing: 0.02em;
-          width: fit-content;
         }
         .industry-tag {
           font-size: 0.65rem;
@@ -366,18 +363,11 @@ function Hero() {
           background: rgba(255,92,26,0.18);
           color: var(--white);
         }
-
-        /* Mobile */
+        /* Mobile — same vertical layout */
         @media (max-width: 600px) {
-          .mentor-card {
-            gap: 1rem;
-            padding: 1.1rem 1.1rem;
-            align-items: flex-start;
-            border-radius: 18px;
-          }
-          .avatar-img { width: 80px; height: 80px; }
-          .mentor-name { font-size: 1rem; }
-          .campaign-stat { font-size: 0.72rem; padding: 0.28rem 0.7rem; }
+          .mentor-card { max-width: 100%; }
+          .avatar-img { width: 90px; height: 90px; }
+          .mentor-name { font-size: 1.05rem; }
         }
 
         /* ── CHANGE 2: Hero badge grid — 2x2 on mobile ── */
@@ -457,16 +447,18 @@ function Hero() {
 
         <div className="hero-main-grid">
           <div>
-            {/* Mentor card — redesigned */}
-            <div style={{ position: "relative", marginBottom: "2.5rem" }}>
+            {/* Mentor card — vertical, photo on top */}
+            <div style={{ marginBottom: "2.5rem" }}>
               <div className="mentor-card">
-                {/* Avatar */}
-                <div className="avatar-ring">
-                  <img src="/chirag-2.jpg" alt="Chirag Atreja" className="avatar-img" />
-                  <div className="online-dot" />
+                {/* Top: colored header with avatar */}
+                <div className="mentor-photo-top">
+                  <div className="avatar-ring">
+                    <img src="/chirag-2.jpg" alt="Chirag Atreja" className="avatar-img" />
+                    <div className="online-dot" />
+                  </div>
                 </div>
 
-                {/* Info */}
+                {/* Bottom: info */}
                 <div className="mentor-info">
                   <div className="mentor-name-row">
                     <span className="mentor-name">Chirag Atreja</span>
@@ -487,7 +479,7 @@ function Hero() {
 
                   <div className="mentor-divider" />
 
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem", justifyContent: "center" }}>
                     {["Automobile", "Telecom", "FMCG", "Ecommerce"].map((tag) => (
                       <span key={tag} className="industry-tag">{tag}</span>
                     ))}
