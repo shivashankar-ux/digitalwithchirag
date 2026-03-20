@@ -727,73 +727,81 @@ function ToolsMarquee() {
   const all = [...tools, ...tools];
 
   return (
-    <section style={{ padding: "clamp(3rem, 6vw, 5rem) 0", background: "var(--bg)", overflow: "hidden" }}>
+    <section style={{ padding: "2.5rem 0", background: "var(--bg)", overflow: "hidden" }}>
       <style>{`
         .tools-track {
           display: flex;
           align-items: center;
-          animation: marquee 30s linear infinite;
+          animation: marquee 28s linear infinite;
           width: max-content;
         }
         .tools-track:hover { animation-play-state: paused; }
         .tool-pill {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
+          gap: 0.6rem;
           background: var(--surface);
           border: 1px solid var(--border);
-          border-radius: 100px;
-          padding: 0.75rem 1.6rem;
-          margin: 0 0.6rem;
+          border-radius: 12px;
+          padding: 0.6rem 1rem;
+          margin: 0 0.5rem;
           white-space: nowrap;
           transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
           cursor: default;
-          height: 60px;
         }
         .tool-pill:hover {
-          border-color: rgba(255,193,7,0.5);
-          box-shadow: 0 0 20px rgba(255,193,7,0.15);
+          border-color: rgba(255,193,7,0.4);
+          box-shadow: 0 0 16px rgba(255,193,7,0.1);
           transform: translateY(-2px);
         }
-        /* CHANGE 6: All logos same container size, object-fit contain */
         .tool-logo-wrap {
-          width: 32px;
-          height: 32px;
+          width: 28px;
+          height: 28px;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
+          background: white;
+          border-radius: 6px;
+          padding: 3px;
         }
         .tool-logo {
-          width: 32px;
-          height: 32px;
+          width: 22px;
+          height: 22px;
           object-fit: contain;
           display: block;
         }
         .tool-name {
-          font-size: 0.92rem;
-          font-weight: 700;
-          color: var(--white);
-          letter-spacing: 0.03em;
+          font-size: 0.82rem;
+          font-weight: 600;
+          color: rgba(240,237,232,0.85);
+          letter-spacing: 0.02em;
+        }
+        @media (max-width: 600px) {
+          .tool-pill {
+            padding: 0.5rem 0.8rem;
+            gap: 0.5rem;
+            border-radius: 10px;
+            margin: 0 0.4rem;
+          }
+          .tool-logo-wrap { width: 24px; height: 24px; padding: 2px; }
+          .tool-logo { width: 18px; height: 18px; }
+          .tool-name { font-size: 0.75rem; }
         }
       `}</style>
 
-      <div style={{ textAlign: "center", marginBottom: "2rem", padding: "0 5vw" }}>
-        <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)" }}>
+      <div style={{ textAlign: "center", marginBottom: "1.2rem", padding: "0 5vw" }}>
+        <span style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)" }}>
           Platforms & Tools You Will Master
         </span>
       </div>
 
-      <div style={{ overflow: "hidden", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "0.6rem 0", background: "var(--surface)" }}>
+      <div style={{ overflow: "hidden", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)", padding: "0.8rem 0", background: "var(--surface)" }}>
         <div className="tools-track">
           {all.map((tool, i) => (
             <div key={i} className="tool-pill">
               <div className="tool-logo-wrap">
-                <img
-                  src={tool.logo}
-                  alt={tool.name}
-                  className="tool-logo"
-                />
+                <img src={tool.logo} alt={tool.name} className="tool-logo" />
               </div>
               <span className="tool-name">{tool.name}</span>
             </div>
