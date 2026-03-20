@@ -498,7 +498,7 @@ function Hero() {
           {/* CHANGE 2: 4 stat cards — 2x2 grid (already via .hero-badge-grid CSS) */}
           <div className="hero-badge-grid" style={{ animation: "fadeIn 1s ease 0.5s both" }}>
             {[
-              { icon: "📅", title: "3 +1 Months", sub: "Course + Internship" },
+              { icon: "📅", title: "2 +1 Months", sub: "Course + Internship" },
               { icon: "🎯", title: "Live Classes", sub: "Real-time learning" },
               { icon: "💼", title: "100%", sub: "Job Assistance" },
               { icon: "🤖", title: "AI Tools", sub: "Included in curriculum" },
