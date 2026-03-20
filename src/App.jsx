@@ -724,7 +724,7 @@ function ToolsMarquee() {
     { name: "Comscore",         logo: "/Comscore_id_Tq3ojgw_0.svg",  color: "255,140,0" },
     { name: "GWI",              logo: "/gwi.png",                    color: "255,20,147" },
   ];
-  const all = [...tools, ...tools];
+  const all = [...tools, ...tools, ...tools];
 
   return (
     <section style={{ padding: "2.5rem 0", background: "var(--bg)", overflow: "hidden" }}>
@@ -754,7 +754,7 @@ function ToolsMarquee() {
           border: 1px solid rgba(255,255,255,0.08);
           transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
           padding: 10px;
-          background: rgba(255,255,255,0.04);
+          background: white;
         }
         .tool-card:hover .tool-icon-wrap {
           transform: translateY(-5px) scale(1.08);
