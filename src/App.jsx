@@ -714,15 +714,15 @@ function Curriculum() {
 /* ─── TOOLS MARQUEE — real PNG logos, glowing cards ──────────── */
 function ToolsMarquee() {
   const tools = [
-    { name: "Google Ads",       logo: "/google-ads.png",       color: "79,136,255" },
-    { name: "Meta Ads",         logo: "/meta-ads.png",         color: "0,130,251" },
-    { name: "YouTube",          logo: "/youtube.png",          color: "255,0,0" },
-    { name: "DV360",            logo: "/dv360.png",            color: "52,168,83" },
-    { name: "Google Analytics", logo: "/google-analytics.png", color: "249,171,0" },
-    { name: "ChatGPT",          logo: "/chatgpt-logo.png",     color: "255,255,255" },
-    { name: "Canva",            logo: "/canva.png",            color: "100,100,255" },
-    { name: "Comscore",         logo: "/comscore.png",         color: "255,140,0" },
-    { name: "GWI",              logo: "/gwi.png",              color: "255,20,147" },
+    { name: "Google Ads",       logo: "/google-ads-2.svg",           color: "79,136,255" },
+    { name: "Meta Ads",         logo: "/meta-3.svg",                 color: "0,130,251" },
+    { name: "YouTube",          logo: "/youtube-icon-5.svg",         color: "255,0,0" },
+    { name: "DV360",            logo: "/favicon.svg",                color: "52,168,83" },
+    { name: "Google Analytics", logo: "/google-analytics-4.svg",     color: "249,171,0" },
+    { name: "ChatGPT",          logo: "/chatgpt-6.svg",              color: "16,163,127" },
+    { name: "Canva",            logo: "/canva-wordmark-2.svg",       color: "100,100,255" },
+    { name: "Comscore",         logo: "/Comscore_id_Tq3ojgw_0.svg",  color: "255,140,0" },
+    { name: "GWI",              logo: "/gwi.png",                    color: "255,20,147" },
   ];
   const all = [...tools, ...tools];
 
