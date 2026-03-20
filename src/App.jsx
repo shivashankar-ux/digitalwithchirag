@@ -458,12 +458,12 @@ function Hero() {
           }
           .mentor-photo-top {
             width: 100%;
-            height: 220px;
+            height: 260px;
           }
           .mentor-photo-top img {
-            object-position: center 30%;
-            transform: scale(1.4);
-            transform-origin: center 30%;
+            object-fit: cover;
+            object-position: center center;
+            transform: none;
           }
           .mentor-photo-top::after {
             background: linear-gradient(to bottom, transparent 50%, rgba(10,10,16,0.7));
