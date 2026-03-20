@@ -160,171 +160,258 @@ function Hero() {
   }, []);
 
   return (
-    <section style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 5vw", paddingTop: "70px", position: "relative", overflow: "hidden" }}>
+    <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "0 5vw", paddingTop: "70px", paddingBottom: "2rem", position: "relative", overflow: "hidden" }}>
       <style>{`
-        /* ── Mentor card — vertical redesign ── */
         @keyframes borderGlow {
-          0%, 100% { opacity: 0.5; }
-          50% { opacity: 1; }
+          0%, 100% { opacity: 0.5; } 50% { opacity: 1; }
         }
         @keyframes pulse-dot {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.5); opacity: 0.6; }
+          0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.6; }
         }
         @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from { transform: rotate(0deg); } to { transform: rotate(360deg); }
         }
         @keyframes mentorSlideIn {
-          from { opacity: 0; transform: translateX(-50px); }
-          to { opacity: 1; transform: translateX(0); }
+          from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); }
         }
         @keyframes shimmerMove {
-          0% { left: -60%; }
-          100% { left: 120%; }
+          0% { left: -60%; } 100% { left: 120%; }
         }
-        .mentor-card {
+        @keyframes heroFadeUp {
+          from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Hero layout ── */
+        .hero-outer {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
+          align-items: center;
+        }
+        .hero-left {
           display: flex;
           flex-direction: column;
+          gap: 1.4rem;
+        }
+        .hero-right {
+          display: flex;
+          flex-direction: column;
+          gap: 1.2rem;
+        }
+
+        /* ── Top badge ── */
+        .hero-pill {
+          display: inline-flex;
           align-items: center;
-          background: rgba(10, 10, 16, 0.95);
+          gap: 0.5rem;
+          background: rgba(255,92,26,0.08);
+          border: 1px solid rgba(255,92,26,0.25);
+          border-radius: 100px;
+          padding: 0.5rem 1.1rem;
+          width: fit-content;
+          animation: heroFadeUp 0.6s ease 0.1s both;
+        }
+        .hero-pill-dot {
+          width: 7px; height: 7px;
+          border-radius: 50%;
+          background: var(--orange);
+          box-shadow: 0 0 8px var(--orange);
+          flex-shrink: 0;
+        }
+        .hero-pill-text {
+          font-size: 0.72rem;
+          font-weight: 600;
+          letter-spacing: 0.07em;
+          text-transform: uppercase;
+          color: var(--orange);
+        }
+
+        /* ── Headline ── */
+        .hero-headline {
+          font-family: var(--font-display);
+          font-weight: 800;
+          font-size: clamp(3rem, 6vw, 5.5rem);
+          line-height: 0.88;
+          letter-spacing: -0.03em;
+          margin: 0;
+          animation: heroFadeUp 0.7s ease 0.2s both;
+        }
+        .hero-headline .line-orange {
+          color: var(--orange);
+          text-shadow: 0 0 80px rgba(255,92,26,0.35);
+          display: block;
+        }
+        .hero-headline .line-white {
+          color: var(--white);
+          display: block;
+        }
+
+        /* ── USP tags (inline, compact) ── */
+        .hero-usp-row {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          animation: heroFadeUp 0.7s ease 0.35s both;
+        }
+        .hero-usp-item {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          font-size: 0.88rem;
+          color: rgba(240,237,232,0.75);
+          font-weight: 500;
+        }
+        .hero-usp-item::before {
+          content: '';
+          width: 5px; height: 5px;
+          border-radius: 50%;
+          background: var(--orange);
+          flex-shrink: 0;
+        }
+
+        /* ── CTA button ── */
+        .hero-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: var(--orange);
+          color: white;
+          padding: 0.9rem 2rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: 700;
+          font-size: 0.9rem;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          box-shadow: 0 0 40px var(--orange-glow);
+          transition: transform 0.2s, box-shadow 0.2s;
+          width: fit-content;
+          animation: heroFadeUp 0.7s ease 0.5s both;
+        }
+        .hero-cta:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 10px 50px var(--orange-glow);
+        }
+
+        /* ── Mentor card — horizontal desktop, vertical mobile ── */
+        .mentor-card {
+          display: flex;
+          flex-direction: row;
+          background: rgba(10,10,16,0.95);
           border: 1px solid rgba(255,193,7,0.2);
-          border-radius: 24px;
+          border-radius: 20px;
           overflow: hidden;
           animation: mentorSlideIn 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s both;
           transition: box-shadow 0.3s, border-color 0.3s;
-          max-width: 340px;
         }
         .mentor-card:hover {
           box-shadow: 0 24px 64px rgba(255,193,7,0.12);
           border-color: rgba(255,193,7,0.4);
         }
-        /* Top photo area */
+        /* Photo side */
         .mentor-photo-top {
-          width: 100%;
-          background: linear-gradient(135deg, rgba(255,92,26,0.35) 0%, rgba(255,193,7,0.2) 100%);
-          display: flex;
-          justify-content: center;
-          align-items: flex-end;
-          padding: 1.8rem 1.5rem 0;
+          width: 140px;
+          flex-shrink: 0;
           position: relative;
           overflow: hidden;
+          border-radius: 0;
         }
-        .mentor-photo-top::before {
+        .mentor-photo-top img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center top;
+          display: block;
+        }
+        .mentor-photo-top::after {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(255,92,26,0.15), rgba(255,193,7,0.08));
+          background: linear-gradient(to right, transparent 60%, rgba(10,10,16,0.6));
           pointer-events: none;
         }
-        /* Avatar ring */
-        .avatar-ring {
-          position: relative;
-          flex-shrink: 0;
-          z-index: 1;
-        }
-        .avatar-ring::before {
-          content: '';
-          position: absolute;
-          inset: -4px;
-          border-radius: 50%;
-          background: conic-gradient(var(--orange), rgba(255,92,26,0.4), #FFC107, var(--orange));
-          animation: spin-slow 4s linear infinite;
-          z-index: 0;
-        }
-        .avatar-img {
-          width: 110px;
-          height: 110px;
-          border-radius: 50%;
-          object-fit: cover;
-          object-position: center top;
-          position: relative;
-          z-index: 1;
-          border: 3px solid rgba(10,10,16,1);
-          display: block;
-        }
+        /* Online dot on photo */
         .online-dot {
           position: absolute;
-          bottom: 6px; right: 6px;
-          width: 14px; height: 14px;
+          bottom: 10px;
+          right: 10px;
+          width: 12px; height: 12px;
           background: #25D366;
           border-radius: 50%;
           border: 2px solid rgba(10,10,16,1);
           z-index: 2;
           animation: pulse-dot 2s ease-in-out infinite;
         }
-        /* Info below photo */
+        /* Info side */
         .mentor-info {
-          width: 100%;
+          flex: 1;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          gap: 0.7rem;
-          padding: 1.4rem 1.4rem 1.6rem;
-          text-align: center;
+          gap: 0.55rem;
+          padding: 1.2rem 1.2rem 1.2rem 1rem;
+          min-width: 0;
         }
         .mentor-name-row {
           display: flex;
           align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
+          gap: 0.45rem;
           flex-wrap: wrap;
         }
         .mentor-name {
           font-family: var(--font-display);
           font-weight: 800;
-          font-size: 1.2rem;
+          font-size: 1.05rem;
           color: var(--white);
-          letter-spacing: -0.01em;
         }
         .mentor-yrs-badge {
           background: rgba(255,193,7,0.12);
           border: 1px solid rgba(255,193,7,0.35);
           border-radius: 100px;
-          padding: 0.18rem 0.7rem;
-          font-size: 0.7rem;
+          padding: 0.15rem 0.6rem;
+          font-size: 0.65rem;
           font-weight: 700;
           color: var(--orange);
-          letter-spacing: 0.06em;
+          letter-spacing: 0.05em;
           white-space: nowrap;
         }
         .mentor-role {
-          font-size: 0.75rem;
-          color: rgba(240,237,232,0.4);
+          font-size: 0.68rem;
+          color: rgba(240,237,232,0.35);
           font-weight: 500;
-          letter-spacing: 0.04em;
-          margin-top: -0.3rem;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          margin-top: -0.2rem;
         }
         .mentor-divider {
           height: 1px;
-          width: 100%;
           background: rgba(255,255,255,0.06);
         }
         .agency-row {
           display: flex;
           flex-wrap: wrap;
-          gap: 0.3rem;
+          gap: 0.28rem;
           align-items: center;
-          justify-content: center;
         }
         .agency-label {
-          font-size: 0.62rem;
-          color: rgba(240,237,232,0.35);
-          font-weight: 600;
-          letter-spacing: 0.06em;
+          font-size: 0.58rem;
+          color: rgba(240,237,232,0.28);
+          font-weight: 700;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           width: 100%;
-          text-align: center;
           margin-bottom: 0.1rem;
         }
         .agency-badge {
-          font-size: 0.65rem;
+          font-size: 0.62rem;
           font-weight: 700;
           background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.1);
+          border: 1px solid rgba(255,255,255,0.09);
           border-radius: 100px;
-          padding: 0.2rem 0.55rem;
-          color: rgba(240,237,232,0.65);
+          padding: 0.15rem 0.48rem;
+          color: rgba(240,237,232,0.6);
           letter-spacing: 0.04em;
           transition: all 0.2s;
           cursor: default;
@@ -338,24 +425,24 @@ function Hero() {
         .campaign-stat {
           display: inline-flex;
           align-items: center;
-          gap: 0.4rem;
-          font-size: 0.78rem;
+          gap: 0.35rem;
+          font-size: 0.72rem;
           font-weight: 800;
           color: var(--orange);
           background: rgba(255,193,7,0.07);
           border: 1px solid rgba(255,193,7,0.2);
-          border-radius: 10px;
-          padding: 0.35rem 0.9rem;
-          letter-spacing: 0.02em;
+          border-radius: 8px;
+          padding: 0.28rem 0.75rem;
+          width: fit-content;
         }
         .industry-tag {
-          font-size: 0.65rem;
+          font-size: 0.62rem;
           font-weight: 600;
           background: rgba(255,92,26,0.08);
-          border: 1px solid rgba(255,92,26,0.25);
+          border: 1px solid rgba(255,92,26,0.22);
           border-radius: 100px;
-          padding: 0.2rem 0.55rem;
-          color: rgba(240,237,232,0.8);
+          padding: 0.15rem 0.48rem;
+          color: rgba(240,237,232,0.75);
           transition: all 0.2s;
           white-space: nowrap;
         }
@@ -363,156 +450,141 @@ function Hero() {
           background: rgba(255,92,26,0.18);
           color: var(--white);
         }
-        /* Mobile — same vertical layout */
+        /* Mobile — vertical: photo on top, info below */
         @media (max-width: 600px) {
-          .mentor-card { max-width: 100%; }
-          .avatar-img { width: 90px; height: 90px; }
-          .mentor-name { font-size: 1.05rem; }
-        }
-
-        /* ── CHANGE 2: Hero badge grid — 2x2 on mobile ── */
-        .hero-main-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2rem;
-          align-items: start;
-          margin-top: 2rem;
+          .mentor-card {
+            flex-direction: column;
+          }
+          .mentor-photo-top {
+            width: 100%;
+            height: 200px;
+          }
+          .mentor-photo-top::after {
+            background: linear-gradient(to bottom, transparent 50%, rgba(10,10,16,0.7));
+          }
+          .mentor-info {
+            padding: 1.1rem;
+            gap: 0.5rem;
+          }
+          .mentor-name { font-size: 1rem; }
         }
         .hero-badge-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 1rem;
+          gap: 0.85rem;
+          animation: heroFadeUp 0.7s ease 0.3s both;
         }
+        .hero-stat-card {
+          background: var(--surface);
+          border: 1px solid var(--border);
+          border-radius: 14px;
+          padding: 1.2rem 1rem;
+          transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .hero-stat-card:hover {
+          border-color: rgba(255,92,26,0.4);
+          transform: translateY(-3px);
+          box-shadow: 0 16px 40px rgba(255,92,26,0.1);
+        }
+
+        /* ── Mobile ── */
         @media (max-width: 768px) {
-          .hero-main-grid {
+          .hero-outer {
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 2rem;
           }
-          .hero-badge-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 0.7rem;
-          }
-          .hero-badge-grid > div {
-            padding: 1rem !important;
-          }
-          .hero-badge-grid > div > div:first-child {
-            font-size: 1.2rem !important;
-            margin-bottom: 0.3rem !important;
-          }
-          .hero-badge-grid > div > div:nth-child(2) {
-            font-size: 1rem !important;
-          }
-          .hero-badge-grid > div > div:nth-child(3) {
-            font-size: 0.72rem !important;
-          }
+          .hero-headline { font-size: clamp(2.8rem, 10vw, 4rem); }
+          .hero-right { flex-direction: column; }
+          .mentor-card { max-width: 100%; }
+          .avatar-img { width: 88px; height: 88px; }
+          .hero-badge-grid { gap: 0.7rem; }
+          .hero-stat-card { padding: 1rem 0.85rem; }
         }
       `}</style>
 
-      <div style={{ position: "absolute", top: "20%", right: "10%", width: "500px", height: "500px", borderRadius: "50%", background: "radial-gradient(circle, rgba(255,92,26,0.12) 0%, transparent 70%)", pointerEvents: "none", animation: "float 8s ease-in-out infinite" }} />
-      <div style={{ position: "absolute", bottom: "10%", left: "5%", width: "300px", height: "300px", borderRadius: "50%", background: "radial-gradient(circle, rgba(245,166,35,0.07) 0%, transparent 70%)", pointerEvents: "none", animation: "float 10s ease-in-out infinite 2s" }} />
-      <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)", backgroundSize: "80px 80px", pointerEvents: "none" }} />
+      {/* Background elements */}
+      <div style={{ position: "absolute", top: "20%", right: "5%", width: "500px", height: "500px", borderRadius: "50%", background: "radial-gradient(circle, rgba(255,92,26,0.1) 0%, transparent 70%)", pointerEvents: "none", animation: "float 8s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", bottom: "15%", left: "5%", width: "300px", height: "300px", borderRadius: "50%", background: "radial-gradient(circle, rgba(245,166,35,0.06) 0%, transparent 70%)", pointerEvents: "none", animation: "float 10s ease-in-out infinite 2s" }} />
+      <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)", backgroundSize: "80px 80px", pointerEvents: "none" }} />
 
-      <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto", width: "100%" }}>
+      <div className="hero-outer">
+        {/* ── LEFT COLUMN ── */}
+        <div className="hero-left">
+          {/* Top pill */}
+          <div className="hero-pill">
+            <span className="hero-pill-dot" />
+            <span className="hero-pill-text">Industry-Level Training · AI-Powered Skills</span>
+          </div>
 
-        {/* Floating badge */}
-        <div style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", background: "rgba(255,92,26,0.1)", border: "1px solid rgba(255,92,26,0.3)", borderRadius: "100px", padding: "0.7rem 1.6rem", marginBottom: "2rem", animation: "float 6s ease-in-out infinite" }}>
-          <span style={{ width: "9px", height: "9px", borderRadius: "50%", background: "var(--orange)", display: "inline-block", boxShadow: "0 0 8px var(--orange)" }} />
-          <span style={{ fontSize: "clamp(0.65rem, 2vw, 1rem)", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--orange)" }}>
-            Industry-level Digital Marketing Training with AI-Powered Marketing Skills
-          </span>
+          {/* Big headline */}
+          <h1 className="hero-headline">
+            <span className="line-orange">DIGITAL</span>
+            <span className="line-white">MARKETING</span>
+            <span style={{ display: "block", fontSize: "clamp(1rem, 2vw, 1.6rem)", fontWeight: 600, color: "rgba(240,237,232,0.45)", letterSpacing: "0.02em", marginTop: "0.5rem", fontFamily: "var(--font-body)" }}>
+              Training that gets you hired.
+            </span>
+          </h1>
+
+          {/* USP points */}
+          <div className="hero-usp-row">
+            {[
+              "Build job-ready skills companies actually hire for",
+              "Run & scale your own digital marketing campaigns",
+              "Learn from 12+ years of real agency experience",
+            ].map((t, i) => (
+              <div key={i} className="hero-usp-item">{t}</div>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <a href="https://wa.me/919311048234" target="_blank" rel="noreferrer" className="hero-cta">
+            Start Learning →
+          </a>
         </div>
 
-        {/* Main heading */}
-        <h1 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "clamp(2rem, 3vw, 3rem)", lineHeight: 0.9, letterSpacing: "-0.02em", marginBottom: "1.5rem" }}>
-          <div style={{ overflow: "hidden" }}>
-            <span style={{ display: "block", color: "var(--orange)", animation: "slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both", textShadow: "0 0 80px rgba(255,92,26,0.4)" }}>DIGITAL</span>
-          </div>
-          <div style={{ overflow: "hidden" }}>
-            <span style={{ display: "block", animation: "slideUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s both" }}>MARKETING</span>
-          </div>
-        </h1>
-
-        {/* USP Highlight Cards */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "2.5rem", animation: "fadeIn 1s ease 0.5s both" }}>
-          {[
-            { icon: "🎓", text: "Build Job-Ready Skills Companies Actually Hire For" },
-            { icon: "💼", text: "Learn to Run & Scale Digital Marketing for Your Business" },
-          ].map((item, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: "1rem", background: "rgba(255,193,7,0.07)", border: "1px solid rgba(255,193,7,0.25)", borderLeft: "4px solid var(--orange)", borderRadius: "10px", padding: "1rem 1.4rem" }}>
-              <span style={{ fontSize: "1.6rem", flexShrink: 0 }}>{item.icon}</span>
-              <span style={{ fontSize: "clamp(0.95rem, 2vw, 1.1rem)", color: "var(--white)", fontWeight: 700, lineHeight: 1.4 }}>{item.text}</span>
+        {/* ── RIGHT COLUMN ── */}
+        <div className="hero-right">
+          {/* Mentor card — photo left on desktop, top on mobile */}
+          <div className="mentor-card">
+            <div className="mentor-photo-top">
+              <img src="/chirag-2.jpg" alt="Chirag Atreja" />
+              <div className="online-dot" />
             </div>
-          ))}
-        </div>
-
-        <div className="hero-main-grid">
-          <div>
-            {/* Mentor card — vertical, photo on top */}
-            <div style={{ marginBottom: "2.5rem" }}>
-              <div className="mentor-card">
-                {/* Top: colored header with avatar */}
-                <div className="mentor-photo-top">
-                  <div className="avatar-ring">
-                    <img src="/chirag-2.jpg" alt="Chirag Atreja" className="avatar-img" />
-                    <div className="online-dot" />
-                  </div>
-                </div>
-
-                {/* Bottom: info */}
-                <div className="mentor-info">
-                  <div className="mentor-name-row">
-                    <span className="mentor-name">Chirag Atreja</span>
-                    <span className="mentor-yrs-badge">⚡ {count}+ YRS</span>
-                  </div>
-                  <div className="mentor-role">Digital Marketing Expert</div>
-
-                  <div className="mentor-divider" />
-
-                  <div className="agency-row">
-                    <span className="agency-label">Worked at</span>
-                    {["WPP", "IPG", "Publicis", "Omnicom", "Havas"].map((a) => (
-                      <span key={a} className="agency-badge">{a}</span>
-                    ))}
-                  </div>
-
-                  <span className="campaign-stat">💰 Handled ₹100 Cr+ Campaigns</span>
-
-                  <div className="mentor-divider" />
-
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem", justifyContent: "center" }}>
-                    {["Automobile", "Telecom", "FMCG", "Ecommerce"].map((tag) => (
-                      <span key={tag} className="industry-tag">{tag}</span>
-                    ))}
-                  </div>
-                </div>
+            <div className="mentor-info">
+              <div className="mentor-name-row">
+                <span className="mentor-name">Chirag Atreja</span>
+                <span className="mentor-yrs-badge">⚡ {count}+ YRS</span>
+              </div>
+              <div className="mentor-role">Digital Marketing Expert</div>
+              <div className="mentor-divider" />
+              <div className="agency-row">
+                <span className="agency-label">Worked at</span>
+                {["WPP", "IPG", "Publicis", "Omnicom", "Havas"].map((a) => (
+                  <span key={a} className="agency-badge">{a}</span>
+                ))}
+              </div>
+              <span className="campaign-stat">💰 Handled ₹100 Cr+ Campaigns</span>
+              <div className="mentor-divider" />
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.28rem" }}>
+                {["Automobile", "Telecom", "FMCG", "Ecommerce"].map((tag) => (
+                  <span key={tag} className="industry-tag">{tag}</span>
+                ))}
               </div>
             </div>
-
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", animation: "fadeIn 1s ease 0.8s both" }}>
-              <a href="https://wa.me/919311048234" target="_blank" rel="noreferrer"
-                style={{ background: "var(--orange)", color: "white", padding: "0.9rem 2rem", borderRadius: "6px", textDecoration: "none", fontWeight: 700, fontSize: "0.9rem", letterSpacing: "0.06em", textTransform: "uppercase", boxShadow: "0 0 40px var(--orange-glow)", transition: "transform 0.2s, box-shadow 0.2s", display: "inline-block" }}
-                onMouseEnter={(e) => { e.target.style.transform = "translateY(-3px)"; e.target.style.boxShadow = "0 8px 50px var(--orange-glow)"; }}
-                onMouseLeave={(e) => { e.target.style.transform = "translateY(0)"; e.target.style.boxShadow = "0 0 40px var(--orange-glow)"; }}>
-                Start Learning →
-              </a>
-            </div>
           </div>
 
-          {/* CHANGE 2: 4 stat cards — 2x2 grid (already via .hero-badge-grid CSS) */}
-          <div className="hero-badge-grid" style={{ animation: "fadeIn 1s ease 0.5s both" }}>
+          {/* 4 stat cards — 2x2 */}
+          <div className="hero-badge-grid">
             {[
               { icon: "📅", title: "2 +1 Months", sub: "Course + Internship" },
               { icon: "🎯", title: "Live Classes", sub: "Real-time learning" },
               { icon: "💼", title: "100%", sub: "Job Assistance" },
               { icon: "🤖", title: "AI Tools", sub: "Included in curriculum" },
             ].map((s, i) => (
-              <div key={i} data-hover
-                style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: "12px", padding: "1.4rem", transition: "border-color 0.3s, transform 0.3s, box-shadow 0.3s" }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(255,92,26,0.4)"; e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 20px 40px rgba(255,92,26,0.1)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
-                <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{s.icon}</div>
-                <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "1.3rem", color: "var(--white)" }}>{s.title}</div>
-                <div style={{ fontSize: "0.8rem", color: "var(--muted)", marginTop: "0.2rem" }}>{s.sub}</div>
+              <div key={i} className="hero-stat-card">
+                <div style={{ fontSize: "1.4rem", marginBottom: "0.4rem" }}>{s.icon}</div>
+                <div style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "1.15rem", color: "var(--white)" }}>{s.title}</div>
+                <div style={{ fontSize: "0.75rem", color: "var(--muted)", marginTop: "0.15rem" }}>{s.sub}</div>
               </div>
             ))}
           </div>
