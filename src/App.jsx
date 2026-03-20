@@ -162,14 +162,14 @@ function Hero() {
   return (
     <section style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 5vw", paddingTop: "70px", position: "relative", overflow: "hidden" }}>
       <style>{`
-        /* ── CHANGE 1: Mentor card mobile fix ── */
+        /* ── Mentor card redesign ── */
         @keyframes borderGlow {
           0%, 100% { opacity: 0.5; }
           50% { opacity: 1; }
         }
         @keyframes pulse-dot {
           0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.4); opacity: 0.6; }
+          50% { transform: scale(1.5); opacity: 0.6; }
         }
         @keyframes spin-slow {
           from { transform: rotate(0deg); }
@@ -187,28 +187,28 @@ function Hero() {
           display: flex;
           flex-direction: row;
           align-items: center;
-          gap: 1.4rem;
-          background: rgba(13, 13, 20, 0.9);
-          backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 193, 7, 0.25);
-          border-radius: 20px;
-          padding: 1.4rem 1.6rem;
+          gap: 1.6rem;
+          background: rgba(10, 10, 16, 0.92);
+          backdrop-filter: blur(24px);
+          border: 1px solid rgba(255,193,7,0.2);
+          border-radius: 24px;
+          padding: 1.6rem;
           position: relative;
           overflow: hidden;
           animation: mentorSlideIn 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s both;
-          transition: box-shadow 0.3s ease, border-color 0.3s;
+          transition: box-shadow 0.3s, border-color 0.3s;
         }
         .mentor-card:hover {
-          box-shadow: 0 20px 60px rgba(255, 193, 7, 0.15);
-          border-color: rgba(255,193,7,0.45);
+          box-shadow: 0 24px 64px rgba(255,193,7,0.12);
+          border-color: rgba(255,193,7,0.4);
         }
         .mentor-card::before {
           content: '';
           position: absolute;
           inset: 0;
-          border-radius: 20px;
+          border-radius: 24px;
           padding: 1px;
-          background: linear-gradient(135deg, rgba(255,193,7,0.6), transparent, rgba(255,92,26,0.4));
+          background: linear-gradient(135deg, rgba(255,193,7,0.5), transparent 50%, rgba(255,92,26,0.3));
           -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
           -webkit-mask-composite: xor;
           mask-composite: exclude;
@@ -219,13 +219,14 @@ function Hero() {
           content: '';
           position: absolute;
           top: -40%; left: -20%;
-          width: 60%; height: 200%;
-          background: linear-gradient(90deg, transparent, rgba(255,193,7,0.04), transparent);
+          width: 55%; height: 200%;
+          background: linear-gradient(90deg, transparent, rgba(255,193,7,0.03), transparent);
           transform: skewX(-15deg);
-          animation: shimmerMove 4s ease-in-out infinite;
+          animation: shimmerMove 5s ease-in-out infinite;
           pointer-events: none;
         }
-        /* Avatar ring */
+
+        /* Avatar */
         .avatar-ring {
           position: relative;
           flex-shrink: 0;
@@ -235,45 +236,37 @@ function Hero() {
           position: absolute;
           inset: -4px;
           border-radius: 50%;
-          background: linear-gradient(135deg, var(--orange), rgba(255,92,26,0.8), var(--orange));
+          background: conic-gradient(var(--orange), rgba(255,92,26,0.4), #FFC107, var(--orange));
           animation: spin-slow 4s linear infinite;
           z-index: 0;
         }
-        .avatar-ring::after {
-          content: '';
-          position: absolute;
-          inset: -8px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, rgba(255,193,7,0.3), transparent);
-          animation: spin-slow 6s linear infinite reverse;
-          z-index: 0;
-        }
         .avatar-img {
-          width: 90px;
-          height: 90px;
+          width: 100px;
+          height: 100px;
           border-radius: 50%;
           object-fit: cover;
           object-position: center top;
           position: relative;
           z-index: 1;
-          border: 3px solid var(--bg);
+          border: 3px solid rgba(10,10,16,1);
           display: block;
         }
         .online-dot {
           position: absolute;
-          bottom: 4px; right: 4px;
+          bottom: 6px; right: 6px;
           width: 14px; height: 14px;
           background: #25D366;
           border-radius: 50%;
-          border: 2px solid var(--bg);
+          border: 2px solid rgba(10,10,16,1);
           z-index: 2;
           animation: pulse-dot 2s ease-in-out infinite;
         }
-        /* Info section */
+
+        /* Info */
         .mentor-info {
           display: flex;
           flex-direction: column;
-          gap: 0.55rem;
+          gap: 0.6rem;
           flex: 1;
           min-width: 0;
         }
@@ -286,84 +279,105 @@ function Hero() {
         .mentor-name {
           font-family: var(--font-display);
           font-weight: 800;
-          font-size: 1.1rem;
+          font-size: 1.15rem;
           color: var(--white);
+          letter-spacing: -0.01em;
         }
         .mentor-yrs-badge {
-          background: rgba(255,193,7,0.15);
-          border: 1px solid rgba(255,193,7,0.4);
+          background: rgba(255,193,7,0.12);
+          border: 1px solid rgba(255,193,7,0.35);
           border-radius: 100px;
-          padding: 0.15rem 0.65rem;
+          padding: 0.18rem 0.7rem;
           font-size: 0.7rem;
           font-weight: 700;
           color: var(--orange);
-          letter-spacing: 0.05em;
+          letter-spacing: 0.06em;
           white-space: nowrap;
+        }
+        .mentor-role {
+          font-size: 0.75rem;
+          color: rgba(240,237,232,0.45);
+          font-weight: 500;
+          letter-spacing: 0.04em;
+          margin-top: -0.2rem;
         }
         .mentor-divider {
           height: 1px;
-          background: rgba(255,255,255,0.07);
-          margin: 0.1rem 0;
+          background: rgba(255,255,255,0.06);
+        }
+        .agency-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.3rem;
+          align-items: center;
+        }
+        .agency-label {
+          font-size: 0.62rem;
+          color: rgba(240,237,232,0.35);
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          white-space: nowrap;
         }
         .agency-badge {
-          font-size: 0.67rem;
+          font-size: 0.65rem;
           font-weight: 700;
-          background: rgba(255,255,255,0.06);
-          border: 1px solid rgba(255,255,255,0.12);
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.1);
           border-radius: 100px;
-          padding: 0.22rem 0.6rem;
-          color: rgba(240,237,232,0.7);
+          padding: 0.2rem 0.55rem;
+          color: rgba(240,237,232,0.65);
           letter-spacing: 0.04em;
-          transition: all 0.2s ease;
+          transition: all 0.2s;
           cursor: default;
           white-space: nowrap;
         }
         .agency-badge:hover {
-          background: rgba(255,193,7,0.12);
-          border-color: rgba(255,193,7,0.4);
+          background: rgba(255,193,7,0.1);
+          border-color: rgba(255,193,7,0.35);
           color: var(--orange);
         }
         .campaign-stat {
           display: inline-flex;
           align-items: center;
-          font-size: 0.75rem;
+          gap: 0.4rem;
+          font-size: 0.78rem;
           font-weight: 800;
           color: var(--orange);
-          background: rgba(255,193,7,0.08);
-          border: 1px solid rgba(255,193,7,0.25);
-          border-radius: 8px;
-          padding: 0.3rem 0.8rem;
+          background: rgba(255,193,7,0.07);
+          border: 1px solid rgba(255,193,7,0.2);
+          border-radius: 10px;
+          padding: 0.35rem 0.9rem;
           letter-spacing: 0.02em;
+          width: fit-content;
         }
         .industry-tag {
-          font-size: 0.67rem;
+          font-size: 0.65rem;
           font-weight: 600;
-          background: rgba(255,92,26,0.1);
-          border: 1px solid rgba(255,92,26,0.3);
+          background: rgba(255,92,26,0.08);
+          border: 1px solid rgba(255,92,26,0.25);
           border-radius: 100px;
-          padding: 0.22rem 0.6rem;
-          color: rgba(240,237,232,0.85);
-          transition: all 0.2s ease;
+          padding: 0.2rem 0.55rem;
+          color: rgba(240,237,232,0.8);
+          transition: all 0.2s;
           white-space: nowrap;
         }
         .industry-tag:hover {
-          background: rgba(255,92,26,0.2);
+          background: rgba(255,92,26,0.18);
           color: var(--white);
         }
-        /* Mobile — side by side, avatar bigger than before */
+
+        /* Mobile */
         @media (max-width: 600px) {
           .mentor-card {
             gap: 1rem;
-            padding: 1.1rem;
-            margin: 0 2px;
+            padding: 1.1rem 1.1rem;
             align-items: flex-start;
+            border-radius: 18px;
           }
-          .avatar-img {
-            width: 78px;
-            height: 78px;
-          }
-          .mentor-name { font-size: 0.97rem; }
-          .campaign-stat { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+          .avatar-img { width: 80px; height: 80px; }
+          .mentor-name { font-size: 1rem; }
+          .campaign-stat { font-size: 0.72rem; padding: 0.28rem 0.7rem; }
         }
 
         /* ── CHANGE 2: Hero badge grid — 2x2 on mobile ── */
@@ -443,7 +457,7 @@ function Hero() {
 
         <div className="hero-main-grid">
           <div>
-            {/* Mentor card — bigger avatar, slide in from left */}
+            {/* Mentor card — redesigned */}
             <div style={{ position: "relative", marginBottom: "2.5rem" }}>
               <div className="mentor-card">
                 {/* Avatar */}
@@ -454,28 +468,25 @@ function Hero() {
 
                 {/* Info */}
                 <div className="mentor-info">
-                  {/* Name + years */}
                   <div className="mentor-name-row">
                     <span className="mentor-name">Chirag Atreja</span>
                     <span className="mentor-yrs-badge">⚡ {count}+ YRS</span>
                   </div>
+                  <div className="mentor-role">Digital Marketing Expert</div>
 
                   <div className="mentor-divider" />
 
-                  {/* Agencies */}
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem", alignItems: "center" }}>
-                    <span style={{ fontSize: "0.63rem", color: "var(--muted)", fontWeight: 600, whiteSpace: "nowrap" }}>Worked at:</span>
+                  <div className="agency-row">
+                    <span className="agency-label">Worked at</span>
                     {["WPP", "IPG", "Publicis", "Omnicom", "Havas"].map((a) => (
                       <span key={a} className="agency-badge">{a}</span>
                     ))}
                   </div>
 
-                  {/* Campaign stat */}
                   <span className="campaign-stat">💰 Handled ₹100 Cr+ Campaigns</span>
 
                   <div className="mentor-divider" />
 
-                  {/* Industry tags */}
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
                     {["Automobile", "Telecom", "FMCG", "Ecommerce"].map((tag) => (
                       <span key={tag} className="industry-tag">{tag}</span>
@@ -519,100 +530,7 @@ function Hero() {
   );
 }
 
-/* ─── FOUNDER CAROUSEL — scroll trigger, slide in from left ─── */
-function FounderCarousel() {
-  const cardRefs = useRef([]);
 
-  useEffect(() => {
-    const observers = [];
-    cardRefs.current.forEach((el, i) => {
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => {
-                el.style.opacity = "1";
-                el.style.transform = "translateX(0)";
-              }, i * 180);
-              obs.disconnect();
-            }
-          });
-        },
-        { threshold: 0.15 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
-
-  const cards = [
-    { tag: "12+ Years of Real Agency Experience", quote: "I didn't just study digital marketing — I lived it inside the world's top agencies for over a decade." },
-    { tag: "Trained by Global Networks — Publicis, WPP, Havas", quote: "Every campaign I teach, I've actually run. Every tool I show you, I've used on real client budgets." },
-    { tag: "Founder, DigitalWithChirag", quote: "DigitalWithChirag exists because the industry needed training that actually prepares you for the real thing." },
-  ];
-
-  return (
-    <section style={{ background: "var(--bg)", padding: "clamp(4rem, 8vw, 7rem) 5vw", overflow: "hidden" }}>
-      <style>{`
-        .mentor-slide-card {
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 16px;
-          padding: 1.8rem;
-          border-left: 3px solid var(--orange);
-          opacity: 0;
-          transform: translateX(-60px);
-          transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s, border-color 0.3s;
-        }
-        .mentor-slide-card:hover {
-          transform: translateX(0) translateY(-4px) !important;
-          box-shadow: 0 20px 40px rgba(255,92,26,0.12);
-          border-color: rgba(255,92,26,0.35);
-        }
-        @media (max-width: 600px) {
-          .mentor-slide-card {
-            padding: 1.3rem;
-          }
-        }
-      `}</style>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div className="reveal" style={{ marginBottom: "3rem" }}>
-          <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)", display: "block", marginBottom: "0.8rem" }}>Meet Your Mentor</span>
-          <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 4rem)", lineHeight: 0.95 }}>
-            The face behind<br /><span style={{ color: "var(--orange)" }}>DigitalWithChirag</span>
-          </h2>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))", gap: "1.5rem" }}>
-          {cards.map((item, i) => (
-            <div
-              key={i}
-              className="mentor-slide-card"
-              ref={(el) => (cardRefs.current[i] = el)}
-            >
-              <div style={{ display: "inline-block", background: "rgba(255,193,7,0.1)", border: "1px solid rgba(255,193,7,0.3)", borderRadius: "100px", padding: "0.25rem 0.8rem", marginBottom: "1rem" }}>
-                <span style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--orange)" }}>{item.tag}</span>
-              </div>
-              <p style={{ color: "rgba(240,237,232,0.85)", lineHeight: 1.75, fontSize: "0.95rem", fontStyle: "italic", margin: 0 }}>
-                "{item.quote}"
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="reveal" style={{ display: "flex", alignItems: "center", gap: "1rem", marginTop: "2.5rem" }}>
-          <div style={{ width: "44px", height: "44px", borderRadius: "50%", background: "var(--orange)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: "1rem", flexShrink: 0, color: "white" }}>C</div>
-          <div>
-            <div style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--white)" }}>Chirag Atreja</div>
-            <div style={{ fontSize: "0.78rem", color: "var(--orange)", fontWeight: 600 }}>Digital Marketing Expert · 12+ Years</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ─── FOR WHOM ───────────────────────────────────────────────── */
 function ForWhom() {
@@ -1007,7 +925,7 @@ function Outcomes() {
         <div className="reveal" style={{ marginBottom: "4rem" }}>
           <span style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--orange)", display: "block", marginBottom: "1rem" }}>After Completing This Program</span>
           <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "clamp(2.2rem, 4vw, 4rem)", lineHeight: 0.95 }}>
-            You will be<br /><span style={{ color: "var(--orange)" }}>unstoppable</span>
+            What You'll Be Able To<br /><span style={{ color: "var(--orange)" }}>Do After This Program</span>
           </h2>
         </div>
         <div className="stagger-children" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1.2rem" }}>
@@ -1198,7 +1116,7 @@ function CTA() {
             style={{ background: "var(--orange)", color: "white", padding: "1.1rem 2.5rem", borderRadius: "8px", textDecoration: "none", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.06em", textTransform: "uppercase", boxShadow: "0 0 60px var(--orange-glow)", display: "inline-block", transition: "transform 0.2s, box-shadow 0.2s" }}
             onMouseEnter={(e) => { e.target.style.transform = "translateY(-4px) scale(1.02)"; e.target.style.boxShadow = "0 20px 80px var(--orange-glow)"; }}
             onMouseLeave={(e) => { e.target.style.transform = "translateY(0) scale(1)"; e.target.style.boxShadow = "0 0 60px var(--orange-glow)"; }}>
-            Enroll Now →
+            Apply for Next Batch →
           </a>
         </div>
       </div>
@@ -1280,7 +1198,6 @@ export default function App() {
       <Nav />
       <Hero />
       <Marquee />
-      <FounderCarousel />
       <ForWhom />
       <Curriculum />
       <ToolsMarquee />
