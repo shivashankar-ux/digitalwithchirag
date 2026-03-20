@@ -324,7 +324,7 @@ function Hero() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center 35%;
+          object-position: center 50%;
           display: block;
         }
         .mentor-photo-top::after {
