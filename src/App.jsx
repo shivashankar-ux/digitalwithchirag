@@ -714,15 +714,15 @@ function Curriculum() {
 /* ─── TOOLS MARQUEE — real logo files, uniform size ─────────── */
 function ToolsMarquee() {
   const tools = [
-    { name: "Google Ads",       logo: "/google-ads.svg" },
-    { name: "Meta Ads",         logo: "/meta-ads.svg" },
-    { name: "YouTube",          logo: "/youtube.svg" },
-    { name: "DV360",            logo: "/dv360.svg" },
-    { name: "Google Analytics", logo: "/google-analytics.svg" },
-    { name: "ChatGPT",          logo: "/chatgpt-logo.svg" },
-    { name: "Canva",            logo: "/canva.svg" },
-    { name: "Comscore",         logo: "/comscore.svg" },
-    { name: "GWI",              logo: "/gwi.svg" },
+    { name: "Google Ads",       logo: "/google-ads.png" },
+    { name: "Meta Ads",         logo: "/meta-ads.png" },
+    { name: "YouTube",          logo: "/youtube.png" },
+    { name: "DV360",            logo: "/dv360.png" },
+    { name: "Google Analytics", logo: "/google-analytics.png" },
+    { name: "ChatGPT",          logo: "/chatgpt-logo.png" },
+    { name: "Canva",            logo: "/canva.png" },
+    { name: "Comscore",         logo: "/comscore.png" },
+    { name: "GWI",              logo: "/gwi.png" },
   ];
   const all = [...tools, ...tools];
 
