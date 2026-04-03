@@ -9,8 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@portabletext/react": "^3.1.0",
+    "@sanity/client": "^6.15.0",
+    "@sanity/icons": "^3.7.4",
+    "@sanity/image-url": "^1.0.2",
+    "@sanity/ui": "^3.1.14",
+    "@sanity/vision": "^3.30.0",
+    "sanity": "^3.30.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "styled-components": "^6.3.12"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
