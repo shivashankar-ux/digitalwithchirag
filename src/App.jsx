@@ -153,13 +153,23 @@ function Nav({ navigate, currentPage }) {
           Digital<span style={{ color: "var(--orange)" }}>With</span>Chirag
         </a>
         <div className="nav-desktop">
-          {["Course", "About Us", "Blogs"].map((l) => (
-            <a key={l} href={l === "Blogs" ? "/blog" : `#${l.toLowerCase()}`}
+          {["Course", "About Us"].map((l) => (
+            <a key={l} href={`#${l.toLowerCase()}`}
               onClick={(e) => handleNavClick(e, l)}
-              style={{ color: l === "Blogs" && currentPage === "blog" ? "var(--orange)" : "var(--muted)", fontSize: "0.88rem", textDecoration: "none", letterSpacing: "0.05em", fontWeight: 500, transition: "color 0.2s" }}
+              style={{ color: "var(--muted)", fontSize: "0.88rem", textDecoration: "none", letterSpacing: "0.05em", fontWeight: 500, transition: "color 0.2s" }}
               onMouseEnter={(e) => (e.target.style.color = "var(--white)")}
-              onMouseLeave={(e) => (e.target.style.color = l === "Blogs" && currentPage === "blog" ? "var(--orange)" : "var(--muted)")}>{l}</a>
+              onMouseLeave={(e) => (e.target.style.color = "var(--muted)")}>{l}</a>
           ))}
+          <a
+            href="https://blog.digitalwithchirag.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--muted)", fontSize: "0.88rem", textDecoration: "none", letterSpacing: "0.05em", fontWeight: 500, transition: "color 0.2s" }}
+            onMouseEnter={(e) => (e.target.style.color = "var(--white)")}
+            onMouseLeave={(e) => (e.target.style.color = "var(--muted)")}
+          >
+            Blogs
+          </a>
           <a href="https://www.instagram.com/digitalwithchirag_" target="_blank" rel="noreferrer" style={{ color: "var(--muted)", textDecoration: "none", transition: "color 0.2s", display: "flex" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#E1306C")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}>{igSvg}</a>
@@ -179,9 +189,18 @@ function Nav({ navigate, currentPage }) {
       </nav>
 
       <div className={`mobile-menu${menuOpen ? " open" : ""}`}>
-        {["Course", "About Us", "Blogs"].map((l) => (
+        {["Course", "About Us"].map((l) => (
           <button key={l} className="mobile-nav-link" onClick={(e) => handleNavClick(e, l)}>{l}</button>
         ))}
+        <a
+          href="https://blog.digitalwithchirag.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mobile-nav-link"
+          onClick={closeMenu}
+        >
+          Blogs
+        </a>
         <a href="#contact" className="mobile-nav-link" onClick={(e) => handleNavClick(e, "Contact")} style={{ color: "var(--orange)", fontWeight: 700, borderBottom: "none" }}>Book Free Call</a>
         <div className="mobile-socials">
           <a href="https://www.instagram.com/digitalwithchirag_" target="_blank" rel="noreferrer" style={{ color: "var(--muted)", display: "flex", transition: "color 0.2s" }}
